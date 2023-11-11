@@ -2,7 +2,7 @@ import { FormControl } from 'Components/formControlRow'
 import { FormWrapper } from 'Components/formWrapper'
 import { Form } from 'react-router-dom'
 
-export const LoginForm = () => {
+export const LoginForm: React.FC<any> = () => {
   return (
     <FormWrapper title='Login'>
       <Form method='POST' action='login'>

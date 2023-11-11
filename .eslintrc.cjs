@@ -19,5 +19,8 @@ module.exports = {
     tsconfigRootDir: __dirname
   },
   plugins: ['react'],
-  rules: {},
+  rules: {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off",
+  },
 }
