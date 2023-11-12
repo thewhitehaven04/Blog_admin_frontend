@@ -5,7 +5,6 @@ const FormHeader = styled.h1`
   font-size: large;
   font-weight: 500;
   padding-left: 8px;
-  box-shadow: 0px 2px 4px 0.5px gray;
 `
 
 const FormContent = styled.div`

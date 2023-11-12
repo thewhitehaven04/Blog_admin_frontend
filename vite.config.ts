@@ -23,7 +23,15 @@ export default defineConfig({
       {
         find: 'Client',
         replacement: path.resolve(__dirname, './src/client')
-      }
+      },
+      {
+        find: 'Hooks',
+        replacement: path.resolve(__dirname, './src/hooks')
+      },
+      {
+        find: 'Service',
+        replacement: path.resolve(__dirname, './src/service')
+      },
     ]
   }
 })

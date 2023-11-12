@@ -1,5 +1,5 @@
-import { useUserContext } from '@/hooks/useUserContext'
 import { UserData } from 'Components/userData'
+import { useUserContext } from 'Hooks/useUserContext'
 
 export const Header = (): JSX.Element => {
   const user = useUserContext()

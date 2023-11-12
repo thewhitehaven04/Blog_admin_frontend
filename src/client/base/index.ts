@@ -1,3 +1,5 @@
+import { URLSearchParams } from 'url'
+
 export default class BaseApiClient {
   rootUrl: string
 
@@ -5,30 +7,15 @@ export default class BaseApiClient {
     this.rootUrl = rootUrl
   }
 
-  // async sendFormData(
-  //   endpoint: string,
-  //   method: 'POST' | 'GET',
-  //   data: FormData,
-  //   args?: RequestInit
-  // ): Promise<Response> {
-  //   return await fetch(`${this.rootUrl}/${endpoint}`, {
-  //     method,
-  //     body: data,
-  //     headers: {
-  //       'Content-Type': 'application/x-www-form-urlencoded'
-  //     },
-  //     mode: 'cors',
-  //     ...args
-  //   })
-  // }
-
   async request(
     method: string,
     endpoint: string,
-    data: any,
+    queryParams?: Record<string, any>,
+    data?: any,
     args?: RequestInit
   ): Promise<Response> {
-    return await fetch(`${this.rootUrl}/${endpoint}`, {
+    const params = new URLSearchParams(queryParams).toString()
+    return await fetch(`${this.rootUrl}/${endpoint}?${params}`, {
       method,
       mode: 'cors',
       headers: {

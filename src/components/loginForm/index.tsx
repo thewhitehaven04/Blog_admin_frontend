@@ -1,8 +1,9 @@
-import { useUserContext } from '@/hooks/useUserContext'
-import { useUserDispatchContext } from '@/hooks/useUserDispatchContext'
-import { AuthService } from '@/service/authService'
 import { FormControl } from 'Components/formControlRow'
 import { FormWrapper } from 'Components/formWrapper'
+import { Input } from 'Components/input'
+import { useUserContext } from 'Hooks/useUserContext'
+import { useUserDispatchContext } from 'Hooks/useUserDispatchContext'
+import { AuthService } from 'Serivce/authService'
 import { useState, type FormEvent, type ChangeEvent } from 'react'
 import { Form, Navigate } from 'react-router-dom'
 
@@ -29,15 +30,15 @@ export const LoginForm = (): JSX.Element => {
   return (
     <>
       {user != null && <Navigate to='/' />}
-      <FormWrapper title='Login'>
-        <Form
-          onSubmit={(e) => {
-            void handleSubmit(e)
-          }}
-        >
+      <Form
+        onSubmit={(e) => {
+          void handleSubmit(e)
+        }}
+      >
+        <FormWrapper title='Login'>
           <FormControl>
             <label htmlFor='username'>Username</label>
-            <input
+            <Input
               id='username'
               type='text'
               name='username'
@@ -46,15 +47,15 @@ export const LoginForm = (): JSX.Element => {
           </FormControl>
           <FormControl>
             <label htmlFor='password'>Password</label>
-            <input
+            <Input
               type='password'
               name='password'
               onChange={handlePasswordChange}
             />
           </FormControl>
           <button type='submit'>Login</button>
-        </Form>
-      </FormWrapper>
+        </FormWrapper>
+      </Form>
     </>
   )
 }
