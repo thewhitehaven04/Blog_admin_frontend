@@ -3,9 +3,11 @@ import {
   UserContext,
   UserDispatchContext
 } from 'Components/context/userContext'
-import { useState } from 'react'
+import { type PropsWithChildren, useState } from 'react'
 
-export const UserContextProvider: React.FC<any> = ({ children }) => {
+export const UserContextProvider = ({
+  children
+}: PropsWithChildren): JSX.Element => {
   const [user, setUser] = useState<IUserContext | null>(null)
 
   return (

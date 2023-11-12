@@ -1,6 +1,6 @@
 import { LoginForm } from 'Components/loginForm'
 
-export const LoginPage: React.FC = () => {
+export const LoginPage = (): JSX.Element => {
   return (
     <LoginForm/>
   )

@@ -7,7 +7,7 @@ export default class AuthClient extends BaseApiClient {
     loginData: IAuthRequestDto
   ): Promise<TGenericResponse<IAuthResponseDto>> {
     return await (
-      await this.request('POST', '/login/authenticate', loginData)
+      await this.request('POST', 'login/authenticate', loginData)
     ).json()
   }
 }

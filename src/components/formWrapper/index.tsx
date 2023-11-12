@@ -15,10 +15,10 @@ const FormContent = styled.div`
   padding: 8px;
 `
 
-export const FormWrapper: React.FC<IFormWrapperProps> = ({
+export const FormWrapper = ({
   title,
   children
-}: IFormWrapperProps) => {
+}: IFormWrapperProps): JSX.Element => {
   return (
     <>
       <FormHeader>{title}</FormHeader>

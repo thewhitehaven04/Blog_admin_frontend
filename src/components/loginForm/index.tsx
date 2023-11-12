@@ -27,11 +27,11 @@ export const LoginForm = (): JSX.Element => {
     }
   }
 
-  const handleUsernameChange = (e: ChangeEvent): void => {
-    setUsername(e.target.textContent ?? '')
+  const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    setUsername(e.target.value ?? '')
   }
-  const handlePasswordChange = (e: ChangeEvent): void => {
-    setPassword(e.target.textContent ?? '')
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    setPassword(e.target.value ?? '')
   }
 
   return (
