@@ -2,10 +2,13 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
 import router from 'Components/router'
+import { UserContextProvider } from 'Components/context/userContext/provider'
 
 const App: React.FC<any> = () => {
   return (
-    <RouterProvider router={router}/>
+    <UserContextProvider>
+      <RouterProvider router={router} />
+    </UserContextProvider>
   )
 }
 

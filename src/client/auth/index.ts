@@ -1,17 +1,13 @@
-export default class AuthClient {
-  rootUrl: string
+import { type IAuthResponseDto, type IAuthRequestDto } from 'Client/auth/types'
+import BaseApiClient from 'Client/base'
+import { type TGenericResponse } from 'Client/base/types'
 
-  constructor(rootUrl: string) {
-    this.rootUrl = rootUrl
-  }
-
-  async auth(loginData: FormData) {
-    return await fetch(`${this.rootUrl}/login/authenticate`, {
-      headers: {
-        'Content-Type': 'application/x-www-form-encoded'
-      },
-      body: loginData,
-      mode: 'cors'
-    })
+export default class AuthClient extends BaseApiClient {
+  async auth(
+    loginData: IAuthRequestDto
+  ): Promise<TGenericResponse<IAuthResponseDto>> {
+    return await (
+      await this.request('POST', '/login/authenticate', loginData)
+    ).json()
   }
 }
