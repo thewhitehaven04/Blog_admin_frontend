@@ -27,7 +27,7 @@
       "Pages/*": ["src/pages/*"],
       "Client/*": ["./src/client/*"],
       "Hooks/*": ["./src/hooks/*"],
-      "Serivce/*": ["./src/service/*"],
+      "Service/*": ["./src/service/*"],
       "@/*": ["./src/*"]
     },
   },

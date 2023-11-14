@@ -10,6 +10,7 @@ const FormHeader = styled.h1`
 const FormContent = styled.div`
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
   gap: 8px;
   padding: 8px;
 `

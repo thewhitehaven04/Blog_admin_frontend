@@ -1,5 +1,3 @@
-import { URLSearchParams } from 'url'
-
 export default class BaseApiClient {
   rootUrl: string
 
@@ -14,7 +12,7 @@ export default class BaseApiClient {
     data?: any,
     args?: RequestInit
   ): Promise<Response> {
-    const params = new URLSearchParams(queryParams).toString()
+    const params = new URLSearchParams(queryParams).toString() 
     return await fetch(`${this.rootUrl}/${endpoint}?${params}`, {
       method,
       mode: 'cors',

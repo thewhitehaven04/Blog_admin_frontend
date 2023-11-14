@@ -5,6 +5,6 @@ interface IErrorResponse {
 
 interface ISuccessfulResponse<T> {
   success: true
-  data?: T
+  data: T
 }
-export type TGenericResponse<T> = ISuccessfulResponse<T> | IErrorResponse
+export type TGenericResponse<T = null> = ISuccessfulResponse<T> | IErrorResponse

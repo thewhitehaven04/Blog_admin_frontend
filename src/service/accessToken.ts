@@ -1,7 +1,7 @@
 const TOKEN_LOCAL_STORAGE_KEY = 'AppTokenString'
 
 export function storeAccessToken(token: string): void {
-  localStorage.set(TOKEN_LOCAL_STORAGE_KEY, token)
+  localStorage.setItem(TOKEN_LOCAL_STORAGE_KEY, token)
 }
 
 export function getAccessToken(): string | null {

@@ -3,21 +3,34 @@ import { FormWrapper } from 'Components/formWrapper'
 import { Input } from 'Components/input'
 import { useUserContext } from 'Hooks/useUserContext'
 import { useUserDispatchContext } from 'Hooks/useUserDispatchContext'
-import { AuthService } from 'Serivce/authService'
+import { AuthService } from 'Service/authService'
 import { useState, type FormEvent, type ChangeEvent } from 'react'
 import { Form, Navigate } from 'react-router-dom'
+import styled from 'styled-components'
+
+const FormErrorMessage = styled.span`
+  color: #ff2929;
+`
 
 export const LoginForm = (): JSX.Element => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const user = useUserContext()
   const userDispatch = useUserDispatchContext()
 
   const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault()
-    const payload = await AuthService.authenticate({ username, password })
-    userDispatch(payload)
+    const [error, payload] = await AuthService.authenticate({
+      username,
+      password
+    })
+
+    if (payload != null) {
+      userDispatch(payload)
+    }
+    setErrorMessage(error)
   }
 
   const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -36,6 +49,7 @@ export const LoginForm = (): JSX.Element => {
         }}
       >
         <FormWrapper title='Login'>
+          {errorMessage != null && <span>errorMessage</span>}
           <FormControl>
             <label htmlFor='username'>Username</label>
             <Input
