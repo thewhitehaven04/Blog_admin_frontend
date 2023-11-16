@@ -1,3 +1,4 @@
+import { HeaderBar } from 'Components/header/styles'
 import { ROUTES_LIST } from 'Components/router/routes'
 import { UserData } from 'Components/userData'
 import { useUserContext } from 'Hooks/useUserContext'
@@ -7,7 +8,7 @@ export const Header = (): JSX.Element => {
   const user = useUserContext()
 
   return (
-    <header>
+    <HeaderBar>
       {user != null ? (
         <UserData username={user.username} email={user.email} />
       ) : (
@@ -15,6 +16,6 @@ export const Header = (): JSX.Element => {
           <button type='button'>Login</button>
         </Link>
       )}
-    </header>
+    </HeaderBar>
   )
 }

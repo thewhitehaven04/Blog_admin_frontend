@@ -18,7 +18,7 @@ export default defineConfig({
       },
       {
         find: 'Pages',
-        replacement: path.resolve(__dirname, './src/pages')
+        replacement: path.resolve(__dirname, './src/components/pages')
       },
       {
         find: 'Client',

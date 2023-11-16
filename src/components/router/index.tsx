@@ -5,7 +5,7 @@ import { GenericErrorBoundary } from 'Components/errorBoundary'
 import { ROUTES_LIST } from 'Components/router/routes'
 import { LoginPage } from 'Pages/login'
 import { PostsPage } from 'Pages/posts'
-import { createBrowserRouter, json } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {

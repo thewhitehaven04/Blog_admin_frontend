@@ -6,11 +6,6 @@ import { useUserDispatchContext } from 'Hooks/useUserDispatchContext'
 import { AuthService } from 'Service/authService'
 import { useState, type FormEvent, type ChangeEvent } from 'react'
 import { Form, Navigate } from 'react-router-dom'
-import styled from 'styled-components'
-
-const FormErrorMessage = styled.span`
-  color: #ff2929;
-`
 
 export const LoginForm = (): JSX.Element => {
   const [username, setUsername] = useState<string>('')
