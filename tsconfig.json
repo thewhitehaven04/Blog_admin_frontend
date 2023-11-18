@@ -28,7 +28,8 @@
       "Client/*": ["./src/client/*"],
       "Hooks/*": ["./src/hooks/*"],
       "Service/*": ["./src/service/*"],
-      "@/*": ["./src/*"]
+      "Utils/*": ["./src/utils/*"],
+      "@/*": ["./src/*"],
     },
   },
   "include": ["./src"],

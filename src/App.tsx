@@ -6,6 +6,7 @@ import { UserContextProvider } from 'Components/context/userContext/provider'
 import { ThemeProvider } from 'styled-components'
 import { theme } from 'Components/styles/theme'
 import { GlobalStyle } from '@/style'
+import '@fontsource/lato'
 
 const App = (): JSX.Element => {
   return (
