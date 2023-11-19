@@ -27,3 +27,4 @@ package-lock.json
 .prettierrc
 /node_modules/
 /public/
+.env

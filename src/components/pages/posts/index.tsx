@@ -1,5 +1,5 @@
 import { type IPostResponseDto } from 'Client/posts/types'
-import { Post } from 'Components/post'
+import { Post } from 'Components/postRead'
 import { PostsCollection } from 'Pages/posts/styles'
 import { useLoaderData } from 'react-router-dom'
 
@@ -8,8 +8,8 @@ export const PostsPage = (): JSX.Element => {
 
   return (
     <PostsCollection>
-      {posts.map((post, index) => (
-        <Post {...post} key={index} />
+      {posts.map((post) => (
+        <Post {...post} key={post.id} />
       ))}
     </PostsCollection>
   )

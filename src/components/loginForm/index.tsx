@@ -1,6 +1,7 @@
 import { FormControl } from 'Components/formControlRow'
 import { FormWrapper } from 'Components/formWrapper'
 import { Input } from 'Components/input'
+import { ROUTES_LIST } from 'Components/router/routes'
 import { useUserContext } from 'Hooks/useUserContext'
 import { useUserDispatchContext } from 'Hooks/useUserDispatchContext'
 import { AuthService } from 'Service/authService'
@@ -37,7 +38,7 @@ export const LoginForm = (): JSX.Element => {
 
   return (
     <>
-      {user != null && <Navigate to='/' />}
+      {user != null && <Navigate to={ROUTES_LIST.posts} />}
       <Form
         onSubmit={(e) => {
           void handleSubmit(e)

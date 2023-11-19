@@ -1,4 +1,5 @@
 export interface IPostResponseDto {
+  id: string,
   title: string
   text: string
   author: string
@@ -10,4 +11,16 @@ export interface IPostResponseDto {
 export interface IGetPostsRequestParamsDto {
   offset: number
   count: number
+}
+
+export interface ICreatePostRequestDto {
+  title: string
+  text: string
+  author: string
+  published: string
+}
+
+export interface IUpdatePostRequestDto {
+  title?: string,
+  text?: string
 }
