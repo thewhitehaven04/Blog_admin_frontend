@@ -2,7 +2,7 @@ import {
   type IUserContext,
   UserContext,
   UserDispatchContext
-} from 'Components/context/userContext'
+} from 'Context/userContext'
 import { getAccessToken } from 'Service/accessToken'
 import { type Payload, jwtDecode } from 'jwt-decode'
 import { type PropsWithChildren, useState, useEffect } from 'react'

@@ -1,4 +1,4 @@
-import { type IUserContext, UserContext } from 'Components/context/userContext';
+import { type IUserContext, UserContext } from 'Context/userContext';
 import { useContext } from 'react';
 
 export function useUserContext(): IUserContext | null {

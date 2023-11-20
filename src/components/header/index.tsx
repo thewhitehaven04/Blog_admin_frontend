@@ -1,5 +1,5 @@
 import { HeaderBar } from 'Components/header/styles'
-import { ROUTES_LIST } from 'Components/router/routes'
+import { ROUTES_LIST } from '@/router/routes'
 import { UserData } from 'Components/userData'
 import { useUserContext } from 'Hooks/useUserContext'
 import { Link } from 'react-router-dom'

@@ -22,7 +22,13 @@ export class PostsClient extends BaseApiClient {
     postData: IUpdatePostRequestDto
   ): Promise<TGenericResponse> {
     return await (
-      await this.authorizedRequest('PATCH', `posts/${postId}`, { data: postData })
+      await this.authorizedRequest('PATCH', `posts/${postId}`, {}, postData)
+    ).json()
+  }
+
+  async deletePost(postId: string): Promise<TGenericResponse> {
+    return await (
+      await this.authorizedRequest('DELETE', `posts/${postId}`)
     ).json()
   }
 }

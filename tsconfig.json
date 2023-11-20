@@ -29,6 +29,8 @@
       "Hooks/*": ["./src/hooks/*"],
       "Service/*": ["./src/service/*"],
       "Utils/*": ["./src/utils/*"],
+      "Router/*": ["./src/router/*"],
+      "Context/*": ["./src/context/*"],
       "@/*": ["./src/*"],
     },
   },

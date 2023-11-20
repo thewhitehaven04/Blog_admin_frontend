@@ -1,7 +1,7 @@
 import {
   type IUserContext,
   UserDispatchContext
-} from 'Components/context/userContext'
+} from 'Context/userContext'
 import { type Dispatch, useContext } from 'react'
 
 export function useUserDispatchContext(): Dispatch<IUserContext> {

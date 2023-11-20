@@ -3,18 +3,15 @@ import { Editor } from '@tinymce/tinymce-react'
 import { Button } from 'Components/button/styles'
 import { CardWrapper } from 'Components/cardWrapper'
 import { Input } from 'Components/input'
-import { type IPostEditForm } from 'Components/postEditForm/types'
 import { type Editor as TinyMCEEditor } from 'tinymce'
-import { Column } from 'Components/userData/styles'
+import { Column } from 'Components/styles/generic'
 import { useRef } from 'react'
-import { Form } from 'react-router-dom'
+import { Form, useOutletContext } from 'react-router-dom'
+import { type IPostResponseDto } from 'Client/posts/types'
 
-export const PostEditForm = ({
-  id,
-  title,
-  text
-}: IPostEditForm): JSX.Element => {
+export const PostEditForm = (): JSX.Element => {
   const editorRef = useRef<null | TinyMCEEditor>(null)
+  const { id, title, text } = useOutletContext<IPostResponseDto>()
 
   return (
     <CardWrapper>

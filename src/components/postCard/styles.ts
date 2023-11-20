@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const PostLayout = styled.article`
   display: grid;
-  grid-template-columns: 1fr 36px;
+  grid-template-columns: 1fr max-content;
   grid-template-rows: min-content min-content;
   grid-template-areas:
     'header tools'
@@ -27,6 +27,11 @@ export const PostPublishedData = styled.span`
 `
 
 export const PostText = styled.div`
+  text-align: justify;
+  grid-area: text;
+`
+
+export const PostTextHidden = styled.div`
   text-align: justify;
   grid-area: text;
   max-height: 100px;

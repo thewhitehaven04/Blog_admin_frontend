@@ -16,6 +16,7 @@ export default class BaseApiClient {
   ): Promise<Response> {
     const params = new URLSearchParams(queryParams).toString()
     return await fetch(`${this.rootUrl}/${endpoint}?${params}`, {
+      ...args,
       method,
       mode: 'cors',
       headers: {
@@ -23,7 +24,6 @@ export default class BaseApiClient {
         ...args?.headers
       },
       body: JSON.stringify(data),
-      ...args
     })
   }
 

@@ -5,3 +5,7 @@ export interface IPostProps {
   published: string
   author: string
 }
+
+export interface PostTextProps {
+  textFullDisplay: boolean
+}

@@ -1,7 +1,7 @@
 import { FormControl } from 'Components/formControlRow'
 import { FormWrapper } from 'Components/formWrapper'
 import { Input } from 'Components/input'
-import { ROUTES_LIST } from 'Components/router/routes'
+import { ROUTES_LIST } from '@/router/routes'
 import { useUserContext } from 'Hooks/useUserContext'
 import { useUserDispatchContext } from 'Hooks/useUserDispatchContext'
 import { AuthService } from 'Service/authService'
