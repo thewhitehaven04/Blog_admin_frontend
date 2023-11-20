@@ -3,6 +3,7 @@ import { ROUTES_LIST } from '@/router/routes'
 import { UserData } from 'Components/userData'
 import { useUserContext } from 'Hooks/useUserContext'
 import { Link } from 'react-router-dom'
+import { Button } from 'Components/button/styles'
 
 export const Header = (): JSX.Element => {
   const user = useUserContext()
@@ -13,7 +14,7 @@ export const Header = (): JSX.Element => {
         <UserData username={user.username} email={user.email} />
       ) : (
         <Link to={ROUTES_LIST.login}>
-          <button type='button'>Login</button>
+          <Button type='button'>Login as administrator</Button>
         </Link>
       )}
     </HeaderBar>

@@ -18,6 +18,22 @@ export const Column = styled('div')<IContainerProps>`
         return 'stretch'
     }
   }};
+  justify-content: ${(props) => {
+    switch (props.$justify) {
+      case 'evenly':
+        return 'space-evenly'
+      case 'between':
+        return 'space-between'
+      case 'spread':
+        return 'space-around'
+      case 'start':
+        return 'start'
+      case 'end':
+        return 'end'
+      default:
+        return 'start'
+    }
+  }};
   gap: 4px;
 `
 
@@ -36,6 +52,22 @@ export const Row = styled.div<IContainerProps>`
         return 'stretch'
       default:
         return 'stretch'
+    }
+  }};
+  justify-content: ${(props) => {
+    switch (props.$justify) {
+      case 'evenly':
+        return 'space-evenly'
+      case 'between':
+        return 'space-between'
+      case 'spread':
+        return 'space-around'
+      case 'start':
+        return 'start'
+      case 'end':
+        return 'end'
+      default:
+        return 'start'
     }
   }};
   gap: 8px;

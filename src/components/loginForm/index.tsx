@@ -7,6 +7,8 @@ import { useUserDispatchContext } from 'Hooks/useUserDispatchContext'
 import { AuthService } from 'Service/authService'
 import { useState, type FormEvent, type ChangeEvent } from 'react'
 import { Form, Navigate } from 'react-router-dom'
+import { CardWrapper } from 'Components/cardWrapper'
+import { Row } from 'Components/styles/generic'
 
 export const LoginForm = (): JSX.Element => {
   const [username, setUsername] = useState<string>('')
@@ -39,33 +41,35 @@ export const LoginForm = (): JSX.Element => {
   return (
     <>
       {user != null && <Navigate to={ROUTES_LIST.posts} />}
-      <Form
-        onSubmit={(e) => {
-          void handleSubmit(e)
-        }}
-      >
-        <FormWrapper title='Login'>
-          {errorMessage != null && <span>errorMessage</span>}
-          <FormControl>
-            <label htmlFor='username'>Username</label>
-            <Input
-              id='username'
-              type='text'
-              name='username'
-              onChange={handleUsernameChange}
-            />
-          </FormControl>
-          <FormControl>
-            <label htmlFor='password'>Password</label>
-            <Input
-              type='password'
-              name='password'
-              onChange={handlePasswordChange}
-            />
-          </FormControl>
-          <button type='submit'>Login</button>
-        </FormWrapper>
-      </Form>
+      <CardWrapper>
+        <Form
+          onSubmit={(e) => {
+            void handleSubmit(e)
+          }}
+        >
+          <FormWrapper title='Login'>
+            {errorMessage != null && <span>errorMessage</span>}
+            <Row $justify='between'>
+              <label htmlFor='username'>Username</label>
+              <Input
+                id='username'
+                type='text'
+                name='username'
+                onChange={handleUsernameChange}
+              />
+            </Row>
+            <Row $justify='between'>
+              <label htmlFor='password'>Password</label>
+              <Input
+                type='password'
+                name='password'
+                onChange={handlePasswordChange}
+              />
+            </Row>
+            <button type='submit'>Login</button>
+          </FormWrapper>
+        </Form>
+      </CardWrapper>
     </>
   )
 }

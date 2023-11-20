@@ -6,9 +6,8 @@ import { ROUTES_LIST } from 'Router/routes'
 import * as RouterLoaders from 'Router/loaders'
 import * as RouterActions from 'Router/actions'
 import { createBrowserRouter } from 'react-router-dom'
-import { PostPage } from 'Pages/post'
-import { PostEditForm } from 'Components/postEditFormCard'
-import { PostView } from 'Components/postViewCard'
+import { PostEditFormPage } from 'Pages/postEditForm'
+import { PostViewPage } from 'Pages/postView'
 
 // TODO: protected routes
 // TODO: error handling
@@ -23,7 +22,7 @@ export default createBrowserRouter([
         element: <LoginPage />
       },
       {
-        path: 'index',
+        index: true,
         element: <LoginPage />
       },
       {
@@ -34,19 +33,13 @@ export default createBrowserRouter([
       {
         path: ROUTES_LIST.viewPost,
         loader: RouterLoaders.getPostById,
-        shouldRevalidate: () => true,
-        element: <PostPage />,
-        children: [
-          {
-            index: true,
-            element: <PostView />,
-          },
-          {
-            path: 'edit',
-            element: <PostEditForm />,
-            action: RouterActions.updatePost
-          }
-        ]
+        element: <PostViewPage />
+      },
+      {
+        path: ROUTES_LIST.editPostSubmit,
+        element: <PostEditFormPage />,
+        loader: RouterLoaders.getPostById,
+        action: RouterActions.updatePost
       }
     ]
   }

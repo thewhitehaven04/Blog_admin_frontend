@@ -1,3 +1,4 @@
+import { type IPostResponseDto } from 'Client/posts/types'
 import { Button } from 'Components/button/styles'
 import { CardWrapper } from 'Components/cardWrapper'
 import { Modal } from 'Components/dialogModal'
@@ -8,14 +9,13 @@ import {
   PostText
 } from 'Components/postCard/styles'
 import { Row } from 'Components/styles/generic'
-import { usePostContext } from 'Context/post'
 import { formatDate } from 'Utils/formatDate'
 import { title } from 'process'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
 
-export const PostView = (): JSX.Element => {
-  const { text, author, published } = usePostContext()
+export const PostViewPage = (): JSX.Element => {
+  const { text, author, published } = useLoaderData() as IPostResponseDto
   const [isDeleteModalShown, setIsDeleteModalShown] = useState(false)
 
   const handleDeleteButtonClick = (): void => {
@@ -40,7 +40,7 @@ export const PostView = (): JSX.Element => {
           <PostText dangerouslySetInnerHTML={{ __html: text }} />
           <Row $alignment='stretch'>
             <Button type='button'>
-              {/** bad decision to wrap link in button and not vice versa, 
+              {/** bad decision to wrap link in button and not vice versa,
                * as only the button text will listen to click events */}
               <Link to='edit'>Edit</Link>
             </Button>
