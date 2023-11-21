@@ -1,6 +1,7 @@
 import { type Dispatch, createContext } from 'react'
 
 interface IUserContext {
+  id: string,
   username: string
   email: string
 }

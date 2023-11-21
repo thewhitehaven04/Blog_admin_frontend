@@ -34,7 +34,7 @@ export const Column = styled('div')<IContainerProps>`
         return 'start'
     }
   }};
-  gap: 4px;
+  gap: 8px;
 `
 
 export const Row = styled.div<IContainerProps>`

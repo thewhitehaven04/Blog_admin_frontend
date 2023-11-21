@@ -3,7 +3,9 @@ import { type TGenericResponse } from 'Client/base/types'
 import {
   type IPostResponseDto,
   type IGetPostsRequestParamsDto,
-  type IUpdatePostRequestDto
+  type IUpdatePostRequestDto,
+  type ICreatePostRequestDto,
+  type IFormattedPostDto
 } from 'Client/posts/types'
 
 export class PostsClient extends BaseApiClient {
@@ -29,6 +31,14 @@ export class PostsClient extends BaseApiClient {
   async deletePost(postId: string): Promise<TGenericResponse> {
     return await (
       await this.authorizedRequest('DELETE', `posts/${postId}`)
+    ).json()
+  }
+
+  async createPost(
+    postData: ICreatePostRequestDto
+  ): Promise<TGenericResponse<IFormattedPostDto>> {
+    return await (
+      await this.authorizedRequest('POST', 'posts', {}, postData)
     ).json()
   }
 }

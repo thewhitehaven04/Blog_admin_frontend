@@ -7,6 +7,7 @@ export const Button = styled.button`
   background-color: ${props => props.theme.bgPrimary};
   color: ${props => props.theme.textPrimary};
   padding: 4px;
+  font-size: 12pt;
 
   &:hover {
     cursor: pointer;

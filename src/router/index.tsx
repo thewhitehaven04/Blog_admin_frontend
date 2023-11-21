@@ -6,8 +6,9 @@ import { ROUTES_LIST } from 'Router/routes'
 import * as RouterLoaders from 'Router/loaders'
 import * as RouterActions from 'Router/actions'
 import { createBrowserRouter } from 'react-router-dom'
-import { PostEditFormPage } from 'Pages/postEditForm'
+import { PostEditFormPage } from 'Pages/postEdit'
 import { PostViewPage } from 'Pages/postView'
+import { PostCreateForm } from 'Pages/postCreate'
 
 // TODO: protected routes
 // TODO: error handling
@@ -34,6 +35,11 @@ export default createBrowserRouter([
         path: ROUTES_LIST.viewPost,
         loader: RouterLoaders.getPostById,
         element: <PostViewPage />
+      },
+      {
+        path: ROUTES_LIST.createPost,
+        element: <PostCreateForm />,
+        action: RouterActions.createPost
       },
       {
         path: ROUTES_LIST.editPostSubmit,

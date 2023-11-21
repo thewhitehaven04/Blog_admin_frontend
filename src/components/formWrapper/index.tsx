@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { type IFormWrapperProps } from './types'
 
 const FormHeader = styled.h1`
-  font-size: large;
-  font-weight: 500;
+  font-size: larger;
+  font-weight: 600;
   padding-left: 8px;
 `
 

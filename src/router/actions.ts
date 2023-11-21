@@ -40,3 +40,13 @@ export const deletePost = async ({
 
   throw new Error('Post ID is undefined')
 }
+
+export const createPost = async ({ request }: { request: Request }): Promise<Response> => {
+  await PostsClientInstance.createPost({
+    author: '1',
+    published: '0',
+    text: '0',
+    title: '0'
+  })
+  return redirect('/')
+}
