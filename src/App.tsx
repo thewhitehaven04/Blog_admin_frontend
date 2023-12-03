@@ -9,6 +9,7 @@ import { GlobalStyle } from '@/style'
 import '@fontsource/lato'
 
 const App = (): JSX.Element => {
+
   return (
     <UserContextProvider>
       <ThemeProvider theme={theme}>
