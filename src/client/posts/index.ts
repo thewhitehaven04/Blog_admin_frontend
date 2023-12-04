@@ -1,3 +1,4 @@
+import appConfig from '@/appConfig'
 import BaseApiClient from 'Client/base'
 import { type TGenericResponse } from 'Client/base/types'
 import {
@@ -42,3 +43,6 @@ export class PostsClient extends BaseApiClient {
     ).json()
   }
 }
+
+const postsClientInstance = new PostsClient(appConfig.apiRootUrl)
+export { postsClientInstance }

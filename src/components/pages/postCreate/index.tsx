@@ -1,3 +1,4 @@
+import { postsClientInstance } from 'Client/posts'
 import { Button } from 'Components/button/styles'
 import { CardWrapper } from 'Components/cardWrapper'
 import { FormWrapper } from 'Components/formWrapper'
@@ -5,63 +6,61 @@ import { Input } from 'Components/input'
 import { Column, Row } from 'Components/styles/generic'
 import { TextEditor } from 'Components/textEditor'
 import { useUserContext } from 'Hooks/useUserContext'
-import { ROUTES_LIST } from 'Router/routes'
-import { type FormEvent, useRef } from 'react'
-import { Form, useNavigate, useSubmit } from 'react-router-dom'
-import { type Editor as TinyMCEEditor } from 'tinymce'
+import { type IPostCreateForm } from 'Pages/postCreate/types'
+import { type SubmitHandler, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 export const PostCreateForm = (): JSX.Element => {
-  const navigate = useNavigate()
-
   const user = useUserContext()
 
-  const editorRef = useRef<TinyMCEEditor | null>()
+  const { register, handleSubmit, setValue } = useForm<IPostCreateForm>()
 
-  const handleEditorInit = (_: any, editor: TinyMCEEditor): void => {
-    editorRef.current = editor
-  }
-
-  const submit = useSubmit()
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
-    e.preventDefault()
-
-    submit(e.currentTarget, {
-      state: {
-        user
-      }
+  const navigate = useNavigate()
+  const createPostSubmitHandler: SubmitHandler<IPostCreateForm> = async (
+    formInputsData
+  ) => {
+    const resp = await postsClientInstance.createPost({
+      ...formInputsData,
+      author: user?.id ?? ''
     })
-
-    navigate(ROUTES_LIST.posts)
+    if (resp.success) {
+      navigate('/posts')
+    } else {
+      console.log(resp.errors)
+    }
   }
+
+  const { name } = register('text')
 
   return (
     <CardWrapper>
-      <Form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(createPostSubmitHandler)}>
         <FormWrapper title='New post'>
           <Column>
             <Row $justify='start'>
               <label htmlFor='title'>Title</label>
-              <Input type='text' name='title' />
+              <Input type='text' {...register('title')} />
             </Row>
             <Row $justify='start' $alignment='center'>
               <label htmlFor='published'>Publishing date</label>
-              <Input type='datetime-local' name='published' />
+              <Input type='datetime-local' {...register('published')} />
             </Row>
             <Column>
               <label htmlFor='text'>Text</label>
               <TextEditor
-                onInit={handleEditorInit}
-                name='text'
                 initialValue=''
+                name={name}
+                onSave={(val) => {
+                  setValue('text', val)
+                }}
               />
             </Column>
           </Column>
           <Row $justify='end'>
-            <Button type="submit">Create</Button>
+            <Button type='submit'>Create</Button>
           </Row>
         </FormWrapper>
-      </Form>
+      </form>
     </CardWrapper>
   )
 }
