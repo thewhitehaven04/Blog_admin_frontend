@@ -1,39 +1,56 @@
-import appConfig from '@/appConfig'
 import { Button } from 'Components/button/styles'
 import { CardWrapper } from 'Components/cardWrapper'
 import { Input } from 'Components/input'
-import { type Editor as TinyMCEEditor } from 'tinymce'
-import { Column } from 'Components/styles/generic'
-import { useRef } from 'react'
-import { Form, useLoaderData } from 'react-router-dom'
+import { Row } from 'Components/styles/generic'
+import { useLoaderData, useNavigate } from 'react-router-dom'
 import { type IPostResponseDto } from 'Client/posts/types'
 import { FormWrapper } from 'Components/formWrapper'
 import { TextEditor } from 'Components/textEditor'
+import { type IPostEditForm } from 'Pages/postEdit/types'
+import { type SubmitHandler, useForm } from 'react-hook-form'
+import { PostsClientInstance } from 'Client/posts'
 
 export const PostEditFormPage = (): JSX.Element => {
-  const editorRef = useRef<null | TinyMCEEditor>(null)
   const { id, title, text } = useLoaderData() as IPostResponseDto
 
-  const handleEditorInit = (_: any, editor: TinyMCEEditor): void => {
-    editorRef.current = editor
+  const { setValue, register, handleSubmit } = useForm<IPostEditForm>()
+
+  const navigate = useNavigate()
+  const editPostHandler: SubmitHandler<IPostEditForm> = async (
+    postEditData
+  ) => {
+    const resp = await PostsClientInstance.updatePost(id, postEditData)
+
+    if (resp.success) {
+      navigate('/posts')
+    }
   }
 
   return (
     <CardWrapper>
-      <Form action={`/post/${id}/edit`} method='POST'>
+      <form onSubmit={handleSubmit(editPostHandler)}>
         <FormWrapper title='Edit post'>
-          <Column>
+          <Row>
             <label>Post title</label>
-            <Input name='title' type='text' defaultValue={title} />
-          </Column>
+            <Input
+              type='text'
+              {...register('title', {
+                required: true,
+                minLength: 2
+              })}
+              defaultValue={title}
+            />
+          </Row>
           <TextEditor
-            onInit={handleEditorInit}
+            onSave={(editorContent) => {
+              setValue('text', editorContent)
+            }}
             name='text'
             initialValue={text}
           />
           <Button type='submit'>Submit</Button>
         </FormWrapper>
-      </Form>
+      </form>
     </CardWrapper>
   )
 }

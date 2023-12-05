@@ -23,9 +23,9 @@ export const PostCard = ({
           <PostHeader>{title}</PostHeader>
         </Link>
         <PostPublishedData>
-          Published by {author} at {formatDate(published)}
+          Published by {author} {formatDate(published)}
         </PostPublishedData>
-        <PostText>{text}</PostText>
+        <PostText dangerouslySetInnerHTML={{ __html: text }} />
       </PostLayout>
     </CardWrapper>
   )

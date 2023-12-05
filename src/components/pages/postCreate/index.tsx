@@ -25,12 +25,8 @@ export const PostCreateForm = (): JSX.Element => {
     })
     if (resp.success) {
       navigate('/posts')
-    } else {
-      console.log(resp.errors)
     }
   }
-
-  const { name } = register('text')
 
   return (
     <CardWrapper>
@@ -49,9 +45,9 @@ export const PostCreateForm = (): JSX.Element => {
               <label htmlFor='text'>Text</label>
               <TextEditor
                 initialValue=''
-                name={name}
-                onSave={(val) => {
-                  setValue('text', val)
+                name='text'
+                onSave={(editorContent) => {
+                  setValue('text', editorContent)
                 }}
               />
             </Column>

@@ -44,5 +44,5 @@ export class PostsClient extends BaseApiClient {
   }
 }
 
-const postsClientInstance = new PostsClient(appConfig.apiRootUrl)
-export { postsClientInstance }
+const PostsClientInstance = new PostsClient(appConfig.apiRootUrl)
+export { PostsClientInstance } 

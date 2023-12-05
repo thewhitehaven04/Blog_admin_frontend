@@ -3,7 +3,7 @@ import { Editor } from '@tinymce/tinymce-react'
 import { Button } from 'Components/button/styles'
 import { Row } from 'Components/styles/generic'
 import { type IEditorProps } from 'Components/textEditor/types'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { type Editor as TinyMCEEditor } from 'tinymce'
 
 export const TextEditor = ({
@@ -24,7 +24,7 @@ export const TextEditor = ({
   }
 
   return (
-    <Row $alignment='start'>
+    <Row $alignment='start' $justify='between'>
       <Editor
         apiKey={appConfig.tinyMceApiKey}
         onInit={handleEditorInit}
