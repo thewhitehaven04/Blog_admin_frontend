@@ -1,11 +1,11 @@
-import { CardWrapper } from 'Components/cardWrapper'
-import { type IPostProps } from 'Components/postCard/types'
+import { CardWrapper } from 'Components/Common/CardWrapper'
+import { type IPostProps } from 'Components/PostCard/types'
 import {
   PostHeader,
   PostLayout,
   PostPublishedData,
   PostText
-} from 'Components/postCard/styles'
+} from 'Components/PostCard/styles'
 import { formatDate } from 'Utils/formatDate'
 import { Link } from 'react-router-dom'
 

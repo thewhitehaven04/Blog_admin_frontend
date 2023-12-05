@@ -4,7 +4,7 @@ import { RouterProvider } from 'react-router-dom'
 import router from '@/router'
 import { UserContextProvider } from 'Context/userContext/provider'
 import { ThemeProvider } from 'styled-components'
-import { theme } from 'Components/styles/theme'
+import { theme } from 'Components/Styles/theme'
 import { GlobalStyle } from '@/style'
 import '@fontsource/lato'
 

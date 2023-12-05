@@ -1,4 +1,4 @@
-import { type IContainerProps } from 'Components/styles/generic/types'
+import { type IContainerProps } from 'Components/Styles/Common/types'
 import styled from 'styled-components'
 
 export const Column = styled('div')<IContainerProps>`

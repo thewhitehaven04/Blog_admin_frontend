@@ -23,7 +23,7 @@
     /* aliasing */
     "baseUrl": "./",
     "paths": {
-      "Pages/*": ["./src/components/pages/*"],
+      "Pages/*": ["src/components/Pages/*"],
       "Components/*": ["./src/components/*"],
       "Client/*": ["./src/client/*"],
       "Hooks/*": ["./src/hooks/*"],

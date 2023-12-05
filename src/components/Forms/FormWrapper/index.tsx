@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { type IFormWrapperProps } from './types'
+import { FormErrors } from 'Components/Forms/FormFieldErrors'
 
 const FormHeader = styled.h1`
   font-size: larger;
@@ -15,13 +16,15 @@ const FormContent = styled.div`
 `
 
 export const FormWrapper = ({
+  children,
   title,
-  children
+  errors = []
 }: IFormWrapperProps): JSX.Element => {
   return (
     <>
       <FormHeader>{title}</FormHeader>
       <FormContent>{children}</FormContent>
+      <FormErrors errors={errors} />
     </>
   )
 }

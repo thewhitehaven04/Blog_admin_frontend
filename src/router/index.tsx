@@ -1,14 +1,14 @@
-import { AppLayout } from 'Components/appLayout'
-import { GenericErrorBoundary } from 'Components/errorBoundary'
-import { LoginPage } from 'Pages/login'
-import { PostsPage } from 'Pages/posts'
+import { AppLayout } from 'Components/Layout/AppLayout'
+import { GenericErrorBoundary } from 'Components/ErrorBoundary'
+import { LoginPage } from 'Pages/Login'
+import { PostsPage } from 'Pages/Posts'
 import { ROUTES_LIST } from 'Router/routes'
 import * as RouterLoaders from 'Router/loaders'
 import * as RouterActions from 'Router/actions'
 import { createBrowserRouter } from 'react-router-dom'
-import { PostEditFormPage } from 'Pages/postEdit'
-import { PostViewPage } from 'Pages/postView'
-import { PostCreateForm } from 'Pages/postCreate'
+import { PostEditFormPage } from 'Pages/PostEdit'
+import { PostViewPage } from 'Pages/PostView'
+import { PostCreateForm } from 'Pages/PostCreate'
 
 // TODO: protected routes
 // TODO: error handling
@@ -39,13 +39,11 @@ export default createBrowserRouter([
       {
         path: ROUTES_LIST.createPost,
         element: <PostCreateForm />,
-        action: RouterActions.createPost
       },
       {
         path: ROUTES_LIST.editPostSubmit,
         element: <PostEditFormPage />,
         loader: RouterLoaders.getPostById,
-        action: RouterActions.updatePost
       }
     ]
   }

@@ -1,6 +1,6 @@
 import {
   type IGenericRouteError,
-} from 'Components/errorBoundary/types'
+} from 'Components/ErrorBoundary/types'
 import { useRouteError } from 'react-router-dom'
 
 export const GenericErrorBoundary = (): JSX.Element => {

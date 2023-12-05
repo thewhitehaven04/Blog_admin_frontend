@@ -1,14 +1,14 @@
 import { type IPostResponseDto } from 'Client/posts/types'
-import { Button } from 'Components/button/styles'
-import { CardWrapper } from 'Components/cardWrapper'
-import { Modal } from 'Components/dialogModal'
+import { Button } from 'Components/Common/Button/styles'
+import { CardWrapper } from 'Components/Common/CardWrapper'
+import { Modal } from 'Components/DialogModal'
 import {
   PostLayout,
   PostHeader,
   PostPublishedData,
   PostText
-} from 'Components/postCard/styles'
-import { Row } from 'Components/styles/generic'
+} from 'Components/PostCard/styles'
+import { Row } from 'Components/Styles/Common'
 import { formatDate } from 'Utils/formatDate'
 import { title } from 'process'
 import { useState } from 'react'

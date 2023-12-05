@@ -1,6 +1,18 @@
+interface IGenericError {
+  message: string
+} 
+
+interface FieldValidationError {
+  type: 'field'
+  location: Location
+  path: string
+  value: any
+  msg: any
+}
+
 interface IErrorResponse {
   success: false
-  errors: Record<string, any>
+  errors: IGenericError[] | FieldValidationError[]  
 }
 
 interface ISuccessfulResponse<T> {

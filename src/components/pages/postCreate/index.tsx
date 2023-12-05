@@ -1,12 +1,12 @@
-import { postsClientInstance } from 'Client/posts'
-import { Button } from 'Components/button/styles'
-import { CardWrapper } from 'Components/cardWrapper'
-import { FormWrapper } from 'Components/formWrapper'
-import { Input } from 'Components/input'
-import { Column, Row } from 'Components/styles/generic'
-import { TextEditor } from 'Components/textEditor'
+import { PostsClientInstance } from 'Client/posts'
+import { Button } from 'Components/Common/Button/styles'
+import { CardWrapper } from 'Components/Common/CardWrapper'
+import { FormWrapper } from 'Components/Forms/FormWrapper'
+import { Input } from 'Components/Forms/Input'
+import { Column, Row } from 'Components/Styles/Common'
+import { TextEditor } from 'Components/TextEditor'
 import { useUserContext } from 'Hooks/useUserContext'
-import { type IPostCreateForm } from 'Pages/postCreate/types'
+import { type IPostCreateForm } from 'Pages/PostCreate/types'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
@@ -19,7 +19,7 @@ export const PostCreateForm = (): JSX.Element => {
   const createPostSubmitHandler: SubmitHandler<IPostCreateForm> = async (
     formInputsData
   ) => {
-    const resp = await postsClientInstance.createPost({
+    const resp = await PostsClientInstance.createPost({
       ...formInputsData,
       author: user?.id ?? ''
     })

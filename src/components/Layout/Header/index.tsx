@@ -1,10 +1,10 @@
-import { HeaderBar } from 'Components/header/styles'
+import { HeaderBar } from 'Components/Layout/Header/styles'
 import { ROUTES_LIST } from '@/router/routes'
-import { UserData } from 'Components/userData'
+import { UserData } from 'Components/UserData'
 import { useUserContext } from 'Hooks/useUserContext'
 import { Link } from 'react-router-dom'
-import { Button } from 'Components/button/styles'
-import { Row } from 'Components/styles/generic'
+import { Button } from 'Components/Common/Button/styles'
+import { Row } from 'Components/Styles/Common'
 
 export const Header = (): JSX.Element => {
   const user = useUserContext()

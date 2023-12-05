@@ -1,4 +1,4 @@
-import { type IDialogModalProps } from 'Components/dialogModal/types'
+import { type IDialogModalProps } from 'Components/DialogModal/types'
 import { useEffect, useRef } from 'react'
 
 // wip 

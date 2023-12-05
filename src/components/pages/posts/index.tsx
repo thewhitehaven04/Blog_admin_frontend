@@ -1,6 +1,6 @@
 import { type IPostResponseDto } from 'Client/posts/types'
-import { PostCard } from 'Components/postCard'
-import { PostsCollection } from 'Pages/posts/styles'
+import { PostCard } from 'Components/PostCard'
+import { PostsCollection } from 'Pages/Posts/styles'
 import { useLoaderData } from 'react-router-dom'
 
 export const PostsPage = (): JSX.Element => {
