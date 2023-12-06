@@ -1,6 +1,6 @@
 import appConfig from '@/appConfig'
 import BaseApiClient from 'Client/base'
-import { type TGenericResponse } from 'Client/base/types'
+import { type TResponseError } from 'Client/base/types'
 import {
   type IPostResponseDto,
   type IGetPostsRequestParamsDto,
@@ -12,37 +12,43 @@ import {
 export class PostsClient extends BaseApiClient {
   async getPosts(
     postsRequest: IGetPostsRequestParamsDto
-  ): Promise<TGenericResponse<IPostResponseDto[]>> {
-    return await (await this.request('GET', 'posts', postsRequest)).json()
+  ): Promise<[TResponseError, null] | [null, IPostResponseDto[]]> {
+    return await this.request<IPostResponseDto[]>('GET', 'posts', postsRequest)
   }
 
-  async getPost(postId: string): Promise<TGenericResponse<IPostResponseDto>> {
-    return await (await this.request('GET', `posts/${postId}`)).json()
+  async getPost(
+    postId: string
+  ): Promise<[TResponseError, null] | [null, IPostResponseDto]> {
+    return await this.request<IPostResponseDto>('GET', `posts/${postId}`)
   }
 
   async updatePost(
     postId: string,
     postData: IUpdatePostRequestDto
-  ): Promise<TGenericResponse> {
-    return await (
-      await this.authorizedRequest('PATCH', `posts/${postId}`, {}, postData)
-    ).json()
+  ): Promise<[TResponseError | null, null]> {
+    return await this.authorizedRequest<null>(
+      'PATCH',
+      `posts/${postId}`,
+      {},
+      postData
+    )
   }
 
-  async deletePost(postId: string): Promise<TGenericResponse> {
-    return await (
-      await this.authorizedRequest('DELETE', `posts/${postId}`)
-    ).json()
+  async deletePost(postId: string): Promise<[TResponseError | null, null]> {
+    return await this.authorizedRequest<null>('DELETE', `posts/${postId}`)
   }
 
   async createPost(
     postData: ICreatePostRequestDto
-  ): Promise<TGenericResponse<IFormattedPostDto>> {
-    return await (
-      await this.authorizedRequest('POST', 'posts', {}, postData)
-    ).json()
+  ): Promise<[TResponseError | null, IFormattedPostDto | null]> {
+    return await this.authorizedRequest<IFormattedPostDto>(
+      'POST',
+      'posts',
+      {},
+      postData
+    )
   }
 }
 
 const PostsClientInstance = new PostsClient(appConfig.apiRootUrl)
-export { PostsClientInstance } 
+export { PostsClientInstance }

@@ -1,7 +1,7 @@
 export const theme = {
-  accent: "#F4DFC8",
+  accent: "#AAAAAA",
   textPrimary: "#222222",
   textSecondary: '#F4EAE0',
   bgSecondary: '#000000',
-  bgPrimary: '#FAF6F0'
+  bgPrimary: '#EEEEEE'
 }

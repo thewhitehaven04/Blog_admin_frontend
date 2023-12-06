@@ -9,20 +9,25 @@ import { TextEditor } from 'Components/TextEditor'
 import { type IPostEditForm } from 'Pages/PostEdit/types'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { PostsClientInstance } from 'Client/posts'
+import { useState } from 'react'
 
 export const PostEditFormPage = (): JSX.Element => {
   const { id, title, text } = useLoaderData() as IPostResponseDto
 
   const { setValue, register, handleSubmit } = useForm<IPostEditForm>()
+  const [errors, setErrors] = useState<string[]>([])
 
   const navigate = useNavigate()
   const editPostHandler: SubmitHandler<IPostEditForm> = async (
     postEditData
   ) => {
-    const resp = await PostsClientInstance.updatePost(id, postEditData)
+    const [responseErrors] = await PostsClientInstance.updatePost(id, postEditData)
 
-    if (resp.success) {
+    if (responseErrors == null) {
       navigate('/posts')
+    }
+    else {
+      setErrors(errors)
     }
   }
 

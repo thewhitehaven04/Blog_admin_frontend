@@ -19,13 +19,12 @@ export const PostCreateForm = (): JSX.Element => {
   const createPostSubmitHandler: SubmitHandler<IPostCreateForm> = async (
     formInputsData
   ) => {
-    const resp = await PostsClientInstance.createPost({
+    const [errors] = await PostsClientInstance.createPost({
       ...formInputsData,
       author: user?.id ?? ''
     })
-    if (resp.success) {
-      navigate('/posts')
-    }
+
+    errors == null && navigate('/posts')
   }
 
   return (

@@ -10,14 +10,14 @@ export const AuthService = {
   async authenticate(
     userData: IAuthRequestDto
   ): Promise<[null, Payload] | [string, null]> {
-    const response = await this.client.auth(userData)
+    const [errors, data] = await this.client.auth(userData)
 
-    if (response.success) {
-      storeAccessToken(response.data.token)
-      const payload = jwtDecode<Payload>(response.data.token) 
+    if (errors == null) {
+      storeAccessToken(data.token)
+      const payload = jwtDecode<Payload>(data.token) 
       return [null, payload]
     }
 
-    return [response.errors[0].message, null]
+    return [errors[0].message, null]
   }
 }

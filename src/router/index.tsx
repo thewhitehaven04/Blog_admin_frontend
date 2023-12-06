@@ -19,10 +19,6 @@ export default createBrowserRouter([
     errorElement: <GenericErrorBoundary />,
     children: [
       {
-        path: ROUTES_LIST.login,
-        element: <LoginPage />
-      },
-      {
         index: true,
         element: <LoginPage />
       },

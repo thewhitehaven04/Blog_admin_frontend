@@ -4,19 +4,27 @@ import { useUserContext } from 'Hooks/useUserContext'
 import { useUserDispatchContext } from 'Hooks/useUserDispatchContext'
 import { AuthService } from 'Service/authService'
 import { CardWrapper } from 'Components/Common/CardWrapper'
-import { Row } from 'Components/Styles/Common'
-import { useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { type ILoginForm } from 'Components/LoginForm/types'
 import { useState } from 'react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { LoginFormValidatorSchema } from 'Components/LoginForm/validation'
+import { ValidatedField } from 'Components/Forms/ValidatedField'
 
 export const LoginForm = (): JSX.Element => {
   const user = useUserContext()
   const userDispatch = useUserDispatchContext()
 
-  const { register, handleSubmit } = useForm<ILoginForm>()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<ILoginForm>({
+    resolver: yupResolver(LoginFormValidatorSchema)
+  })
 
-  const [errors, setErrors] = useState<string[]>([])
+  const [submitErrors, setSubmitErrors] = useState<string[]>([])
 
   const loginHandler: SubmitHandler<ILoginForm> = async (
     loginFormFieldData
@@ -28,27 +36,34 @@ export const LoginForm = (): JSX.Element => {
     }
 
     if (error != null) {
-      setErrors([error])
+      setSubmitErrors([error])
     }
   }
 
-  const navigate = useNavigate()
   if (user != null) {
-    navigate('/posts')
+    return <Navigate to='/posts' />
   }
 
   return (
     <CardWrapper>
       <form onSubmit={handleSubmit(loginHandler)}>
-        <FormWrapper title='Login' errors={errors}>
-          <Row $justify='between'>
-            <label htmlFor='username'>Username</label>
+        <FormWrapper title='Login' errors={submitErrors}>
+          <ValidatedField
+            label='Username'
+            labelFor='username'
+            errorMessage={errors.username?.message ?? null}
+            required
+          >
             <Input id='username' type='text' {...register('username')} />
-          </Row>
-          <Row $justify='between'>
-            <label htmlFor='password'>Password</label>
+          </ValidatedField>
+          <ValidatedField
+            label='Password'
+            labelFor='password'
+            errorMessage={errors.password?.message ?? null}
+            required
+          >
             <Input id='password' type='password' {...register('password')} />
-          </Row>
+          </ValidatedField>
           <button type='submit'>Login</button>
         </FormWrapper>
       </form>
