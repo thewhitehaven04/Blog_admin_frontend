@@ -4,13 +4,11 @@ import { LoginPage } from 'Pages/Login'
 import { PostsPage } from 'Pages/Posts'
 import { ROUTES_LIST } from 'Router/routes'
 import * as RouterLoaders from 'Router/loaders'
-import * as RouterActions from 'Router/actions'
 import { createBrowserRouter } from 'react-router-dom'
 import { PostEditFormPage } from 'Pages/PostEdit'
 import { PostViewPage } from 'Pages/PostView'
 import { PostCreateForm } from 'Pages/PostCreate'
 
-// TODO: protected routes
 // TODO: error handling
 export default createBrowserRouter([
   {
