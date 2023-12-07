@@ -16,7 +16,7 @@ export const ValidatedField = ({
   if (vertical) {
     return (
       <Column>
-        <Row $justify='spread'>
+        <Row $justify='between'>
           <Label htmlFor={labelFor} $required={required}>
             {label}
           </Label>
