@@ -4,10 +4,10 @@ import {
   PostHeader,
   PostLayout,
   PostPublishedData,
-  PostText
+  PostText,
+  PostTitleLink
 } from 'Components/PostCard/styles'
 import { formatDate } from 'Utils/formatDate'
-import { Link } from 'react-router-dom'
 
 export const PostCard = ({
   id,
@@ -19,9 +19,9 @@ export const PostCard = ({
   return (
     <CardWrapper>
       <PostLayout>
-        <Link to={`/post/${id}`}>
+        <PostTitleLink to={`/post/${id}`}>
           <PostHeader>{title}</PostHeader>
-        </Link>
+        </PostTitleLink>
         <PostPublishedData>
           Published by {author} {formatDate(published)}
         </PostPublishedData>

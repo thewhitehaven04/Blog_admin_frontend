@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const PostLayout = styled.article`
@@ -51,4 +52,8 @@ export const PostTextHidden = styled.div`
     #ffff 100%
   );
   -moz-text-fill-color: transparent;
+`
+
+export const PostTitleLink = styled(Link)`
+  text-decoration: none;
 `

@@ -1,4 +1,6 @@
 export interface IDialogModalProps {
+  title: string
   text: string
-  setShow: boolean 
+  acceptCallback?: () => void
+  declineCallback?: () => void
 }

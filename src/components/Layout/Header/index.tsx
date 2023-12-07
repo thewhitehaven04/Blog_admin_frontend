@@ -1,10 +1,8 @@
 import { HeaderBar } from 'Components/Layout/Header/styles'
-import { ROUTES_LIST } from '@/router/routes'
 import { UserData } from 'Components/UserData'
 import { useUserContext } from 'Hooks/useUserContext'
-import { Link } from 'react-router-dom'
-import { Button } from 'Components/Common/Button/styles'
 import { Row } from 'Components/Styles/Common'
+import { ButtonLink } from 'Components/Common/ButtonLink'
 
 export const Header = (): JSX.Element => {
   const user = useUserContext()
@@ -13,15 +11,11 @@ export const Header = (): JSX.Element => {
     <HeaderBar>
       {user != null ? (
         <Row $justify='between' $alignment='center'>
-          <Link to='post/new'>
-            <Button type='button'>New post</Button>
-          </Link>
+          <ButtonLink to='post/new'>New post</ButtonLink>
           <UserData username={user.username} email={user.email} />
         </Row>
       ) : (
-        <Link to='login'>
-          <Button type='button'>Login as administrator</Button>
-        </Link>
+        <ButtonLink to='login'>Login as administrator</ButtonLink>
       )}
     </HeaderBar>
   )
