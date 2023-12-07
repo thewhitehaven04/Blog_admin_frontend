@@ -1,42 +1,62 @@
 import { Button } from 'Components/Common/Button/styles'
 import { CardWrapper } from 'Components/Common/CardWrapper'
 import { Input } from 'Components/Forms/Input'
-import { Row } from 'Components/Styles/Common'
 import { useLoaderData, useNavigate } from 'react-router-dom'
 import { type IPostResponseDto } from 'Client/posts/types'
-import { FormWrapper } from 'Components/Forms/FormWrapper'
+import { BaseFormLayout } from 'Components/Forms/BaseFormLayout'
 import { TextEditor } from 'Components/TextEditor'
 import { type IPostEditForm } from 'Pages/PostEdit/types'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { PostsClientInstance } from 'Client/posts'
 import { useState } from 'react'
+import { ValidatedField } from 'Components/Forms/ValidatedField'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { PostEditValidatorSchema } from 'Pages/PostEdit/validation'
 
 export const PostEditFormPage = (): JSX.Element => {
   const { id, title, text } = useLoaderData() as IPostResponseDto
 
-  const { setValue, register, handleSubmit } = useForm<IPostEditForm>()
-  const [errors, setErrors] = useState<string[]>([])
+  const {
+    setValue,
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<IPostEditForm>({
+    resolver: yupResolver(PostEditValidatorSchema)
+  })
+  const [validationErrors, setValidationErrors] = useState<string[]>([])
 
   const navigate = useNavigate()
   const editPostHandler: SubmitHandler<IPostEditForm> = async (
     postEditData
   ) => {
-    const [responseErrors] = await PostsClientInstance.updatePost(id, postEditData)
+    const [responseErrors] = await PostsClientInstance.updatePost(
+      id,
+      postEditData
+    )
 
     if (responseErrors == null) {
       navigate('/posts')
-    }
-    else {
-      setErrors(errors)
+    } else {
+      setValidationErrors(validationErrors)
     }
   }
 
   return (
     <CardWrapper>
       <form onSubmit={handleSubmit(editPostHandler)}>
-        <FormWrapper title='Edit post'>
-          <Row>
-            <label>Post title</label>
+        <BaseFormLayout
+          title='Edit post'
+          errors={validationErrors}
+          submitButtonText='Submit'
+        >
+          <ValidatedField
+            label='Title'
+            labelFor='title'
+            errorMessage={errors.title?.message ?? ''}
+            vertical
+            required
+          >
             <Input
               type='text'
               {...register('title', {
@@ -45,7 +65,7 @@ export const PostEditFormPage = (): JSX.Element => {
               })}
               defaultValue={title}
             />
-          </Row>
+          </ValidatedField>
           <TextEditor
             onSave={(editorContent) => {
               setValue('text', editorContent)
@@ -53,8 +73,7 @@ export const PostEditFormPage = (): JSX.Element => {
             name='text'
             initialValue={text}
           />
-          <Button type='submit'>Submit</Button>
-        </FormWrapper>
+        </BaseFormLayout>
       </form>
     </CardWrapper>
   )

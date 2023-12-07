@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { PostsClientInstance } from 'Client/posts'
 import { Button } from 'Components/Common/Button/styles'
 import { CardWrapper } from 'Components/Common/CardWrapper'
-import { FormWrapper } from 'Components/Forms/FormWrapper'
+import { BaseFormLayout } from 'Components/Forms/BaseFormLayout'
 import { Input } from 'Components/Forms/Input'
 import { ValidatedField } from 'Components/Forms/ValidatedField'
 import { Column, Row } from 'Components/Styles/Common'
@@ -40,7 +40,7 @@ export const PostCreateForm = (): JSX.Element => {
   return (
     <CardWrapper>
       <form onSubmit={handleSubmit(createPostSubmitHandler)}>
-        <FormWrapper title='New post'>
+        <BaseFormLayout title='New post' submitButtonText='Submit'>
           <Column>
             <ValidatedField
               label='Title'
@@ -71,10 +71,7 @@ export const PostCreateForm = (): JSX.Element => {
               />
             </Column>
           </Column>
-          <Row $justify='end'>
-            <Button type='submit'>Create</Button>
-          </Row>
-        </FormWrapper>
+        </BaseFormLayout>
       </form>
     </CardWrapper>
   )

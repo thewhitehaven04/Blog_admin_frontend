@@ -8,7 +8,7 @@ export const PostLayout = styled.article`
   grid-template-areas:
     'header tools'
     'published tools'
-    'text tools';
+    'text text';
   column-gap: 8px;
   padding: 16px;
 `

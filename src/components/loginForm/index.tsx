@@ -1,4 +1,4 @@
-import { FormWrapper } from 'Components/Forms/FormWrapper'
+import { BaseFormLayout } from 'Components/Forms/BaseFormLayout'
 import { Input } from 'Components/Forms/Input'
 import { useUserContext } from 'Hooks/useUserContext'
 import { useUserDispatchContext } from 'Hooks/useUserDispatchContext'
@@ -47,7 +47,7 @@ export const LoginForm = (): JSX.Element => {
   return (
     <CardWrapper>
       <form onSubmit={handleSubmit(loginHandler)}>
-        <FormWrapper title='Login' errors={submitErrors}>
+        <BaseFormLayout title='Login' errors={submitErrors}>
           <ValidatedField
             label='Username'
             labelFor='username'
@@ -65,7 +65,7 @@ export const LoginForm = (): JSX.Element => {
             <Input id='password' type='password' {...register('password')} />
           </ValidatedField>
           <button type='submit'>Login</button>
-        </FormWrapper>
+        </BaseFormLayout>
       </form>
     </CardWrapper>
   )
