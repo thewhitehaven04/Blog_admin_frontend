@@ -2,7 +2,6 @@ import { AppLayout } from 'Components/Layout/AppLayout'
 import { GenericErrorBoundary } from 'Components/ErrorBoundary'
 import { LoginPage } from 'Pages/Login'
 import { PostsPage } from 'Pages/Posts'
-import { ROUTES_LIST } from 'Router/routes'
 import * as RouterLoaders from 'Router/loaders'
 import { createBrowserRouter } from 'react-router-dom'
 import { PostEditFormPage } from 'Pages/PostEdit'
@@ -14,7 +13,7 @@ import { GetPostErrorPage } from 'Pages/GetPostError'
 // TODO: error handling
 export default createBrowserRouter([
   {
-    path: ROUTES_LIST.root,
+    path: '/',
     element: <AppLayout />,
     errorElement: <GenericErrorBoundary />,
     children: [
@@ -27,22 +26,22 @@ export default createBrowserRouter([
         element: <Private />,
         children: [
           {
-            path: ROUTES_LIST.posts,
+            path: 'posts',
             element: <PostsPage />,
             loader: RouterLoaders.getPosts
           },
           {
-            path: ROUTES_LIST.viewPost,
+            path: 'post/:id',
             loader: RouterLoaders.getPostById,
             element: <PostViewPage />,
             errorElement: <GetPostErrorPage />
           },
           {
-            path: ROUTES_LIST.createPost,
+            path: 'post/new',
             element: <PostCreateForm />
           },
           {
-            path: ROUTES_LIST.editPostSubmit,
+            path: 'post/:id/edit',
             element: <PostEditFormPage />,
             loader: RouterLoaders.getPostById
           }

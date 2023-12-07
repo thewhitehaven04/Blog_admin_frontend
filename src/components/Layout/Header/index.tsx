@@ -19,7 +19,7 @@ export const Header = (): JSX.Element => {
           <UserData username={user.username} email={user.email} />
         </Row>
       ) : (
-        <Link to={ROUTES_LIST.login}>
+        <Link to='login'>
           <Button type='button'>Login as administrator</Button>
         </Link>
       )}
