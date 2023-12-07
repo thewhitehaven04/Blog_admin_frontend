@@ -1,7 +1,7 @@
 import appConfig from '@/appConfig'
 import { Editor } from '@tinymce/tinymce-react'
 import { Button } from 'Components/Common/Button/styles'
-import { Row } from 'Components/Styles/Common'
+import { Column, Row } from 'Components/Styles/Common'
 import { type IEditorProps } from 'Components/TextEditor/types'
 import { useRef } from 'react'
 import { type Editor as TinyMCEEditor } from 'tinymce'
@@ -9,6 +9,7 @@ import { type Editor as TinyMCEEditor } from 'tinymce'
 export const TextEditor = ({
   initialValue,
   name,
+  label: editorTitle,
   onSave
 }: IEditorProps): JSX.Element => {
   const editorRef = useRef<TinyMCEEditor | null>()
@@ -24,13 +25,20 @@ export const TextEditor = ({
   }
 
   return (
-    <Row $alignment='start' $justify='between'>
+    <>
+      <Row $justify='between' $alignment='center'>
+        <label htmlFor={name}>{editorTitle}</label>
+        <Button type='button' onClick={handleSave}>
+          Save
+        </Button>
+      </Row>
       <Editor
         apiKey={appConfig.tinyMceApiKey}
         onInit={handleEditorInit}
         textareaName={name}
         initialValue={initialValue}
         init={{
+          plugins: 'autoresize',
           toolbar:
             'undo redo | blocks | bold italic underline strikethrough | checklist numlist bullist | charmap | removeformat',
           menubar: false,
@@ -38,9 +46,6 @@ export const TextEditor = ({
           content_style: 'body { font-family: Lato }'
         }}
       />
-      <Button type='button' onClick={handleSave}>
-        Save
-      </Button>
-    </Row>
+    </>
   )
 }

@@ -12,6 +12,7 @@ import { useState } from 'react'
 import { ValidatedField } from 'Components/Forms/ValidatedField'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { PostEditValidatorSchema } from 'Pages/PostEdit/validation'
+import { Column } from 'Components/Styles/Common'
 
 export const PostEditFormPage = (): JSX.Element => {
   const { id, title, text } = useLoaderData() as IPostResponseDto
@@ -66,13 +67,16 @@ export const PostEditFormPage = (): JSX.Element => {
               defaultValue={title}
             />
           </ValidatedField>
-          <TextEditor
-            onSave={(editorContent) => {
-              setValue('text', editorContent)
-            }}
-            name='text'
-            initialValue={text}
-          />
+          <Column>
+            <TextEditor
+              onSave={(editorContent) => {
+                setValue('text', editorContent)
+              }}
+              name='text'
+              initialValue={text}
+              label='Post content'
+            />
+          </Column>
         </BaseFormLayout>
       </form>
     </CardWrapper>

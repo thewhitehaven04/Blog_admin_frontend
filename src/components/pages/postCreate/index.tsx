@@ -61,7 +61,7 @@ export const PostCreateForm = (): JSX.Element => {
               <Input type='datetime-local' {...register('published')} />
             </ValidatedField>
             <Column>
-              <label htmlFor='text'>Text</label>
+              <label htmlFor='text'>Post content</label>
               <TextEditor
                 initialValue=''
                 name='text'
