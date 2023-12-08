@@ -23,10 +23,11 @@ export const PostEditFormPage = (): JSX.Element => {
     handleSubmit,
     formState: { errors }
   } = useForm<IPostEditForm>({
-    resolver: yupResolver(PostEditValidatorSchema)
+    resolver: yupResolver(PostEditValidatorSchema),
+    defaultValues: {
+      text
+    }
   })
-  // a disgusting crutch that needs fixing
-  setValue('text', text)
 
   const [validationErrors, setValidationErrors] = useState<string[]>([])
 

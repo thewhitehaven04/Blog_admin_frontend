@@ -13,7 +13,7 @@ export const TextEditor = ({
   initialValue,
   name,
   label,
-  onSave
+  onSave,
 }: IEditorProps): JSX.Element => {
   const editorRef = useRef<TinyMCEEditor | null>()
   const handleEditorInit = (_: any, editor: TinyMCEEditor): void => {

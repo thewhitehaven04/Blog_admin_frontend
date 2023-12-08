@@ -1,6 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { PostsClientInstance } from 'Client/posts'
-import { Button } from 'Components/Common/Button/styles'
 import { CardWrapper } from 'Components/Common/CardWrapper'
 import { BaseFormLayout } from 'Components/Forms/BaseFormLayout'
 import { Input } from 'Components/Forms/Input'
