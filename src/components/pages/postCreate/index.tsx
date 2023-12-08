@@ -5,7 +5,7 @@ import { CardWrapper } from 'Components/Common/CardWrapper'
 import { BaseFormLayout } from 'Components/Forms/BaseFormLayout'
 import { Input } from 'Components/Forms/Input'
 import { ValidatedField } from 'Components/Forms/ValidatedField'
-import { Column, Row } from 'Components/Styles/Common'
+import { Column } from 'Components/Styles/Common'
 import { TextEditor } from 'Components/TextEditor'
 import { useUserContext } from 'Hooks/useUserContext'
 import { type IPostCreateForm } from 'Pages/PostCreate/types'
@@ -60,16 +60,14 @@ export const PostCreateForm = (): JSX.Element => {
             >
               <Input type='datetime-local' {...register('published')} />
             </ValidatedField>
-            <Column>
-              <label htmlFor='text'>Post content</label>
-              <TextEditor
-                initialValue=''
-                name='text'
-                onSave={(editorContent) => {
-                  setValue('text', editorContent)
-                }}
-              />
-            </Column>
+            <TextEditor
+              initialValue=''
+              name='text'
+              label='Post content'
+              onSave={(editorContent) => {
+                setValue('text', editorContent)
+              }}
+            />
           </Column>
         </BaseFormLayout>
       </form>

@@ -9,6 +9,7 @@ import { PostViewPage } from 'Pages/PostView'
 import { PostCreateForm } from 'Pages/PostCreate'
 import { Private } from 'Components/Private'
 import { GetPostErrorPage } from 'Pages/GetPostError'
+import { DeletePostModal } from 'Components/Modals/DeletePostModal'
 
 // TODO: error handling
 export default createBrowserRouter([
@@ -34,7 +35,13 @@ export default createBrowserRouter([
             path: 'post/:id',
             loader: RouterLoaders.getPostById,
             element: <PostViewPage />,
-            errorElement: <GetPostErrorPage />
+            errorElement: <GetPostErrorPage />,
+            children: [
+              {
+                path: 'delete',
+                element: <DeletePostModal />
+              }
+            ]
           },
           {
             path: 'post/new',

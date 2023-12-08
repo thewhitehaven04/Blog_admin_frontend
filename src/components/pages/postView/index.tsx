@@ -2,7 +2,7 @@ import { type IPostResponseDto } from 'Client/posts/types'
 import { Button } from 'Components/Common/Button/styles'
 import { ButtonLink } from 'Components/Common/ButtonLink'
 import { CardWrapper } from 'Components/Common/CardWrapper'
-import { Modal } from 'Components/DialogModal'
+import { Modal } from 'Components/Common/Modal'
 import {
   PostLayout,
   PostHeader,
@@ -12,7 +12,7 @@ import {
 import { Row } from 'Components/Styles/Common'
 import { formatDate } from 'Utils/formatDate'
 import { title } from 'process'
-import { useLoaderData } from 'react-router-dom'
+import { Outlet, useLoaderData } from 'react-router-dom'
 
 export const PostViewPage = (): JSX.Element => {
   const { text, author, published } = useLoaderData() as IPostResponseDto
@@ -23,8 +23,8 @@ export const PostViewPage = (): JSX.Element => {
         <PostLayout>
           <PostHeader>{title}</PostHeader>
           <PostPublishedData>
-            {/** need to rework backend method to return author's name instead 
-             * of ID to prevent making an additional request 
+            {/** need to rework backend method to return author's name instead
+             * of ID to prevent making an additional request
              * to get author by its ID */}
             Published by {author} at {formatDate(published)}
           </PostPublishedData>
@@ -38,6 +38,7 @@ export const PostViewPage = (): JSX.Element => {
           </Row>
         </PostLayout>
       </CardWrapper>
+      <Outlet />
     </>
   )
 }

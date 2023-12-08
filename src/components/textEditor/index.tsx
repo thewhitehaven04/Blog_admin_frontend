@@ -1,15 +1,18 @@
 import appConfig from '@/appConfig'
 import { Editor } from '@tinymce/tinymce-react'
 import { Button } from 'Components/Common/Button/styles'
-import { Column, Row } from 'Components/Styles/Common'
+import { Row } from 'Components/Styles/Common'
 import { type IEditorProps } from 'Components/TextEditor/types'
 import { useRef } from 'react'
 import { type Editor as TinyMCEEditor } from 'tinymce'
 
+/** TODO: look into how further simplify working with the editor. Maybe 
+* implement a custom hook that will allow to request up-to-date editor content 
+* when sending the form */
 export const TextEditor = ({
   initialValue,
   name,
-  label: editorTitle,
+  label,
   onSave
 }: IEditorProps): JSX.Element => {
   const editorRef = useRef<TinyMCEEditor | null>()
@@ -27,7 +30,7 @@ export const TextEditor = ({
   return (
     <>
       <Row $justify='between' $alignment='center'>
-        <label htmlFor={name}>{editorTitle}</label>
+        <label htmlFor={name}>{label}</label>
         <Button type='button' onClick={handleSave}>
           Save
         </Button>

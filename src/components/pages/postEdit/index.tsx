@@ -25,6 +25,9 @@ export const PostEditFormPage = (): JSX.Element => {
   } = useForm<IPostEditForm>({
     resolver: yupResolver(PostEditValidatorSchema)
   })
+  // a disgusting crutch that needs fixing
+  setValue('text', text)
+
   const [validationErrors, setValidationErrors] = useState<string[]>([])
 
   const navigate = useNavigate()
