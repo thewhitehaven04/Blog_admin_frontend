@@ -1,4 +1,3 @@
-import { Button } from 'Components/Common/Button/styles'
 import { CardWrapper } from 'Components/Common/CardWrapper'
 import { Input } from 'Components/Forms/Input'
 import { useLoaderData, useNavigate } from 'react-router-dom'
