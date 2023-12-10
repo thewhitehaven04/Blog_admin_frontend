@@ -1,5 +1,5 @@
-import { FormError } from 'Components/Forms/FormFieldErrors/styles'
-import { type IFormErrorProps } from 'Components/Forms/FormFieldErrors/types'
+import { FormError } from 'Components/Common/Forms/FormFieldErrors/styles'
+import { type IFormErrorProps } from 'Components/Common/Forms/FormFieldErrors/types'
 import { Column } from 'Components/Styles/Common'
 
 export const FormErrors = ({ errors }: IFormErrorProps): JSX.Element => {

@@ -29,6 +29,9 @@ export default class BaseApiClient {
       body: JSON.stringify(data)
     })
 
+    // return Promises from base client class
+    // change validator so that it responds with an array of strings
+
     if (response.ok) {
       const json = (await response.json()) as TGenericResponse<T>
       if (

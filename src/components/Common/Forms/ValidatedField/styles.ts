@@ -1,4 +1,4 @@
-import { type ILabelProps } from 'Components/Forms/ValidatedField/types'
+import { type ILabelProps } from 'Components/Common/Forms/ValidatedField/types'
 import styled from 'styled-components'
 
 export const ValidationMessage = styled.span`

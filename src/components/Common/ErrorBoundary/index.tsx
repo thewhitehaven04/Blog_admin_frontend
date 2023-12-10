@@ -1,6 +1,6 @@
 import {
   type IGenericRouteError,
-} from 'Components/ErrorBoundary/types'
+} from 'Components/Common/ErrorBoundary/types'
 import { useRouteError } from 'react-router-dom'
 
 // placeholder

@@ -1,19 +1,16 @@
-import { BaseFormLayout } from 'Components/Forms/BaseFormLayout'
-import { Input } from 'Components/Forms/Input'
-import { useUserContext } from 'Hooks/useUserContext'
+import { BaseFormLayout } from 'Components/Common/Forms/BaseFormLayout'
+import { Input } from 'Components/Common/Forms/Input'
 import { useUserDispatchContext } from 'Hooks/useUserDispatchContext'
 import { AuthService } from 'Service/authService'
 import { CardWrapper } from 'Components/Common/CardWrapper'
-import { Navigate } from 'react-router-dom'
 import { type SubmitHandler, useForm } from 'react-hook-form'
-import { type ILoginForm } from 'Components/LoginForm/types'
+import { type ILoginForm } from 'Components/Login/LoginForm/types'
 import { useState } from 'react'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { LoginFormValidatorSchema } from 'Components/LoginForm/validation'
-import { ValidatedField } from 'Components/Forms/ValidatedField'
+import { LoginFormValidatorSchema } from 'Components/Login/LoginForm/validation'
+import { ValidatedField } from 'Components/Common/Forms/ValidatedField'
 
 export const LoginForm = (): JSX.Element => {
-  const user = useUserContext()
   const userDispatch = useUserDispatchContext()
 
   const {
@@ -38,10 +35,6 @@ export const LoginForm = (): JSX.Element => {
     if (error != null) {
       setSubmitErrors([error])
     }
-  }
-
-  if (user != null) {
-    return <Navigate to='/posts' />
   }
 
   return (

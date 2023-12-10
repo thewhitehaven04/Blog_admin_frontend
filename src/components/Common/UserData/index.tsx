@@ -1,6 +1,6 @@
 import { CardWrapper } from 'Components/Common/CardWrapper'
 import { Column } from 'Components/Styles/Common'
-import { type IUserDataProps } from 'Components/UserData/types'
+import { type IUserDataProps } from 'Components/Common/UserData/types'
 
 // placeholder
 export const UserData = (props: IUserDataProps): JSX.Element => (

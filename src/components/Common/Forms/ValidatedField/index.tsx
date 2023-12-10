@@ -1,8 +1,8 @@
 import {
   Label,
   ValidationMessage
-} from 'Components/Forms/ValidatedField/styles'
-import { type IValidatedFieldProps } from 'Components/Forms/ValidatedField/types'
+} from 'Components/Common/Forms/ValidatedField/styles'
+import { type IValidatedFieldProps } from 'Components/Common/Forms/ValidatedField/types'
 import { Column, Row } from 'Components/Styles/Common'
 
 export const ValidatedField = ({

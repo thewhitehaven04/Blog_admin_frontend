@@ -1,5 +1,5 @@
 import { type IPostResponseDto } from 'Client/posts/types'
-import { PostCard } from 'Components/PostCard'
+import { PostCard } from 'Components/Posts/PostCard'
 import { PostsCollection } from 'Pages/Posts/styles'
 import { useLoaderData } from 'react-router-dom'
 

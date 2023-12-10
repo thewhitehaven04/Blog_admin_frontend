@@ -1,12 +1,12 @@
 import { CardWrapper } from 'Components/Common/CardWrapper'
-import { type IPostProps } from 'Components/PostCard/types'
+import { type IPostCardProps } from 'Components/Posts/PostCard/types'
 import {
   PostHeader,
   PostLayout,
   PostPublishedData,
   PostText,
   PostTitleLink
-} from 'Components/PostCard/styles'
+} from 'Components/Posts/PostCard/styles'
 import { formatDate } from 'Utils/formatDate'
 
 export const PostCard = ({
@@ -15,7 +15,7 @@ export const PostCard = ({
   text,
   published,
   author
-}: IPostProps): JSX.Element => {
+}: IPostCardProps): JSX.Element => {
   return (
     <CardWrapper>
       <PostLayout>

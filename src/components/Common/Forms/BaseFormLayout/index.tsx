@@ -1,11 +1,11 @@
 import { Button } from 'Components/Common/Button/styles'
 import { type IFormWrapperProps } from './types'
-import { FormErrors } from 'Components/Forms/FormFieldErrors'
+import { FormErrors } from 'Components/Common/Forms/FormFieldErrors'
 import {
   FormContentWrapper,
   FormHeaderWrapper,
   FormTitle
-} from 'Components/Forms/BaseFormLayout/styles'
+} from 'Components/Common/Forms/BaseFormLayout/styles'
 import { Row } from 'Components/Styles/Common'
 
 export const BaseFormLayout = ({

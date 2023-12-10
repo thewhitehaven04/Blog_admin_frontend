@@ -1,8 +1,9 @@
 import appConfig from '@/appConfig'
+import { type Payload } from '@/types/jwt-decode'
 import AuthClient from 'Client/auth'
 import { type IAuthRequestDto } from 'Client/auth/types'
 import { storeAccessToken } from 'Service/accessToken'
-import { type Payload, jwtDecode } from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode'
 
 export const AuthService = {
   client: new AuthClient(appConfig.apiRootUrl),

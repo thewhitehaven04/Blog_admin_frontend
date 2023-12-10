@@ -1,4 +1,4 @@
-export interface IPostProps {
+export interface IPostCardProps {
   id: string,
   title: string 
   text: string
