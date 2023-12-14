@@ -1,10 +1,11 @@
+import { type Payload } from '@/types/jwt-decode'
 import {
   type IUserContext,
   UserContext,
   UserDispatchContext
 } from 'Context/userContext'
 import { getAccessToken } from 'Service/accessToken'
-import { type Payload, jwtDecode } from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode'
 import { type PropsWithChildren, useState, useEffect } from 'react'
 
 export const UserContextProvider = ({

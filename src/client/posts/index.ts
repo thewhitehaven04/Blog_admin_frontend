@@ -1,32 +1,29 @@
 import appConfig from '@/appConfig'
 import BaseApiClient from 'Client/base'
-import { type TResponseError } from 'Client/base/types'
 import {
-  type IPostResponseDto,
   type IGetPostsRequestParamsDto,
   type IUpdatePostRequestDto,
   type ICreatePostRequestDto,
-  type IFormattedPostDto
 } from 'Client/posts/types'
 
 export class PostsClient extends BaseApiClient {
   async getPosts(
     postsRequest: IGetPostsRequestParamsDto
-  ): Promise<[TResponseError, null] | [null, IPostResponseDto[]]> {
-    return await this.request<IPostResponseDto[]>('GET', 'posts', postsRequest)
+  ): Promise<Response> {
+    return await this.request('GET', 'posts', postsRequest)
   }
 
   async getPost(
     postId: string
-  ): Promise<[TResponseError, null] | [null, IPostResponseDto]> {
-    return await this.request<IPostResponseDto>('GET', `posts/${postId}`)
+  ): Promise<Response> {
+    return await this.request('GET', `posts/${postId}`)
   }
 
   async updatePost(
     postId: string,
     postData: IUpdatePostRequestDto
-  ): Promise<[TResponseError | null, null]> {
-    return await this.authorizedRequest<null>(
+  ): Promise<Response> {
+    return await this.authorizedRequest(
       'PATCH',
       `posts/${postId}`,
       {},
@@ -34,14 +31,14 @@ export class PostsClient extends BaseApiClient {
     )
   }
 
-  async deletePost(postId: string): Promise<[TResponseError | null, null]> {
-    return await this.authorizedRequest<null>('DELETE', `posts/${postId}`)
+  async deletePost(postId: string): Promise<Response> {
+    return await this.authorizedRequest('DELETE', `posts/${postId}`)
   }
 
   async createPost(
     postData: ICreatePostRequestDto
-  ): Promise<[TResponseError | null, IFormattedPostDto | null]> {
-    return await this.authorizedRequest<IFormattedPostDto>(
+  ): Promise<Response> {
+    return await this.authorizedRequest(
       'POST',
       'posts',
       {},

@@ -1,5 +1,5 @@
 import { LoginForm } from 'Components/Login/LoginForm'
-import { useUserContext } from 'Hooks/useUserContext'
+import { useUserContext } from 'Hooks/context/useUserContext'
 import { Navigate } from 'react-router-dom'
 
 export const LoginPage = (): JSX.Element => {

@@ -1,6 +1,6 @@
 import { HeaderBar } from 'Components/Layout/Header/styles'
 import { UserData } from 'Components/Common/UserData'
-import { useUserContext } from 'Hooks/useUserContext'
+import { useUserContext } from 'Hooks/context/useUserContext'
 import { Row } from 'Components/Styles/Common'
 import { ButtonLink } from 'Components/Common/ButtonLink'
 

@@ -1,12 +1,15 @@
 import appConfig from '@/appConfig'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export const RedirectPage = (): JSX.Element => {
   const navigate = useNavigate()
 
-  setTimeout(() => {
-    navigate('/')
-  }, appConfig.redirectTimeout)
+  useEffect(() => {
+    setTimeout(() => {
+      navigate('/')
+    }, appConfig.redirectTimeout)
+  }, [navigate])
 
   return (
     <>

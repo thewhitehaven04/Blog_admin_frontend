@@ -1,4 +1,4 @@
-import { number, object } from 'yup'
+import { number, object } from 'yup';
 
 export const PostsQueryParamsSchema = object({
   offset: number()

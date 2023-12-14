@@ -1,4 +1,4 @@
-import { useUserContext } from 'Hooks/useUserContext'
+import { useUserContext } from 'Hooks/context/useUserContext'
 import { RedirectPage } from 'Pages/Redirect'
 import { Outlet } from 'react-router-dom'
 

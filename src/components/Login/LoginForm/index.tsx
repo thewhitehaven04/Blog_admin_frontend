@@ -1,6 +1,6 @@
 import { BaseFormLayout } from 'Components/Common/Forms/BaseFormLayout'
 import { Input } from 'Components/Common/Forms/Input'
-import { useUserDispatchContext } from 'Hooks/useUserDispatchContext'
+import { useUserDispatchContext } from 'Hooks/context/useUserDispatchContext'
 import { AuthService } from 'Service/authService'
 import { CardWrapper } from 'Components/Common/CardWrapper'
 import { type SubmitHandler, useForm } from 'react-hook-form'

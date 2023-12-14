@@ -2,15 +2,7 @@ export interface IGenericError {
   message: string
 } 
 
-export type TResponseError = IGenericError[] | FieldValidationError[]
-
-export interface FieldValidationError {
-  type: 'field'
-  location: Location
-  path: string
-  value: any
-  msg: any
-}
+export type TResponseError = IGenericError[]
 
 interface IErrorResponse {
   success: false

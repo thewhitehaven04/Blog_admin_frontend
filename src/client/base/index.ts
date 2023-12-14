@@ -1,7 +1,6 @@
-import { type TResponseError, type TGenericResponse } from 'Client/base/types'
+import appConfig from '@/appConfig'
+import { ClientError } from '@/errors/client'
 import { getAccessToken } from 'Service/accessToken'
-
-const SUCCESSFUL_RESPONSE_STATUS_CODE = 200
 
 export default class BaseApiClient {
   rootUrl: string
@@ -10,14 +9,16 @@ export default class BaseApiClient {
     this.rootUrl = rootUrl
   }
 
-  async request<T, K = TResponseError>(
+  async request(
     method: string,
     endpoint: string,
     queryParams?: Record<string, any>,
     data?: any,
     args?: RequestInit
-  ): Promise<[K, null] | [null, T]> {
+  ): Promise<Response> {
     const params = new URLSearchParams(queryParams).toString()
+    
+    const abortSignal = AbortSignal.timeout(appConfig.requestTimeout) 
     const response = await fetch(`${this.rootUrl}/${endpoint}?${params}`, {
       ...args,
       method,
@@ -26,33 +27,24 @@ export default class BaseApiClient {
         'Content-Type': 'application/json',
         ...args?.headers
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      signal: abortSignal
     })
 
-    // return Promises from base client class
-    // change validator so that it responds with an array of strings
-
     if (response.ok) {
-      const json = (await response.json()) as TGenericResponse<T>
-      if (
-        (response.status === SUCCESSFUL_RESPONSE_STATUS_CODE && json.success) ||
-        json.success
-      ) {
-        return [null, json.data]
-      }
-      return [json.errors, null]
+      return response
     }
 
-    throw new Error(`API request error: ${response.status}`)
+    throw new ClientError('Unable to connect to the API', response)
   }
 
-  async authorizedRequest<T>(
+  async authorizedRequest(
     method: string,
     endpoint: string,
     queryParams?: Record<string, any>,
     data?: any,
     args?: RequestInit
-  ): Promise<[TResponseError, null] | [null, T]> {
+  ): Promise<Response> {
     const accessToken = getAccessToken()
     if (accessToken != null) {
       return await this.request(method, endpoint, queryParams, data, {
