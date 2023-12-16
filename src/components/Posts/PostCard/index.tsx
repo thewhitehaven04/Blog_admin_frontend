@@ -1,10 +1,10 @@
-import { CardWrapper } from 'Components/Common/CardWrapper'
+import { CardWrapper } from 'Components/Common/CardWrapper/styles'
 import { type IPostCardProps } from 'Components/Posts/PostCard/types'
 import {
   PostHeader,
   PostLayout,
   PostPublishedData,
-  PostText,
+  PostContextBlock,
   PostTitleLink
 } from 'Components/Posts/PostCard/styles'
 import { formatDate } from 'Utils/formatDate'
@@ -25,7 +25,7 @@ export const PostCard = ({
         <PostPublishedData>
           Published by {author} {formatDate(published)}
         </PostPublishedData>
-        <PostText dangerouslySetInnerHTML={{ __html: text }} />
+        <PostContextBlock dangerouslySetInnerHTML={{ __html: text }} />
       </PostLayout>
     </CardWrapper>
   )

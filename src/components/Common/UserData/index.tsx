@@ -1,5 +1,5 @@
-import { CardWrapper } from 'Components/Common/CardWrapper'
-import { Column } from 'Components/Styles/Common'
+import { CardWrapper } from 'Components/Common/CardWrapper/styles'
+import { Column } from '../Column/styles'
 import { type IUserDataProps } from 'Components/Common/UserData/types'
 
 // placeholder

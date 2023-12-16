@@ -1,5 +1,5 @@
 import { Button } from 'Components/Common/Button/styles'
-import { CardWrapper } from 'Components/Common/CardWrapper'
+import { CardWrapper } from 'Components/Common/CardWrapper/styles'
 import {
   ModalOverlay,
   ModalText,
@@ -7,7 +7,8 @@ import {
   ModalWrapper
 } from 'Components/Common/Modal/styles'
 import { type IDialogModalProps } from 'Components/Common/Modal/types'
-import { Column, Row } from 'Components/Styles/Common'
+import { Row } from '../Row/styles'
+import { Column } from '../Column/styles'
 
 export const Modal = ({
   title,

@@ -4,6 +4,9 @@ export const GlobalStyle = createGlobalStyle`
   
   :root {
     box-sizing: border-box;
+
+    --font-serif: "Noto Serif";
+    --font-sans-serif: "Lato";
   }
 
   *, *::after, *::before {
@@ -15,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   * {
-    font-family: "Lato";
+    font-family: var(--font-sans-serif);
   }
 
   ul {

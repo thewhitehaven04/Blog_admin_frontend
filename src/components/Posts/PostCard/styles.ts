@@ -14,6 +14,7 @@ export const PostLayout = styled.article`
 `
 
 export const PostHeader = styled.h2`
+  font-family: var(--font-serif);
   font-size: 18pt;
   font-weight: 600;
   grid-area: header;
@@ -27,9 +28,14 @@ export const PostPublishedData = styled.span`
   margin-bottom: 8px;
 `
 
-export const PostText = styled.div`
+export const PostContextBlock = styled.div`
+  font-family: var(--font-serif);
   text-align: justify;
   grid-area: text;
+
+  & * {
+    font-family: inherit;
+  }
 `
 
 export const PostTextHidden = styled.div`

@@ -6,7 +6,7 @@ import {
   FormHeaderWrapper,
   FormTitle
 } from 'Components/Common/Forms/BaseFormLayout/styles'
-import { Row } from 'Components/Styles/Common'
+import { Row } from 'Components/Common/Row/styles'
 
 export const BaseFormLayout = ({
   children,

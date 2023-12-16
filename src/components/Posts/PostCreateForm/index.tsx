@@ -1,10 +1,10 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { PostsClientInstance } from 'Client/posts'
-import { CardWrapper } from 'Components/Common/CardWrapper'
+import { CardWrapper } from 'Components/Common/CardWrapper/styles'
 import { BaseFormLayout } from 'Components/Common/Forms/BaseFormLayout'
-import { Input } from 'Components/Common/Forms/Input'
+import { Input } from 'Components/Common/Forms/Input/styles'
 import { ValidatedField } from 'Components/Common/Forms/ValidatedField'
-import { Column } from 'Components/Styles/Common'
+import { Column } from 'Components/Common/Column/styles'
 import { TextEditor } from 'Components/TextEditor'
 import { useUserContext } from 'Hooks/context/useUserContext'
 import { type IPostCreateForm } from 'Pages/PostCreate/types'
@@ -28,10 +28,10 @@ export const PostCreateForm = (): JSX.Element => {
   const createPostSubmitHandler: SubmitHandler<IPostCreateForm> = async (
     formInputsData
   ) => {
-    const [submitErrors] = await PostsClientInstance.createPost({
+    const post = await (await PostsClientInstance.createPost({
       ...formInputsData,
       author: user?.id ?? ''
-    })
+    })).json()
 
     if (submitErrors == null) navigate('/posts')
   }

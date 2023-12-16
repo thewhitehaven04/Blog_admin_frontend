@@ -1,7 +1,7 @@
 import appConfig from '@/appConfig'
 import { Editor } from '@tinymce/tinymce-react'
 import { Button } from 'Components/Common/Button/styles'
-import { Row } from 'Components/Styles/Common'
+import { Row } from 'Components/Common/Row/styles'
 import { type IEditorProps } from 'Components/TextEditor/types'
 import { useRef } from 'react'
 import { type Editor as TinyMCEEditor } from 'tinymce'

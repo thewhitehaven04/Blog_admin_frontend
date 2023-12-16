@@ -1,4 +1,4 @@
-export const theme = {
+export const AppTheme = {
   accent: "#AAAAAA",
   textPrimary: "#222222",
   textSecondary: '#F4EAE0',

@@ -1,13 +1,13 @@
-import { ButtonLink } from 'Components/Common/ButtonLink'
-import { CardWrapper } from 'Components/Common/CardWrapper'
+import { ButtonLink } from 'Components/Common/ButtonLink/styles'
+import { CardWrapper } from 'Components/Common/CardWrapper/styles'
 import { type IPostProps } from 'Components/Posts/Post/types'
 import {
   PostLayout,
   PostHeader,
   PostPublishedData,
-  PostText
+  PostContextBlock
 } from 'Components/Posts/PostCard/styles'
-import { Row } from 'Components/Styles/Common'
+import { Row } from 'Components/Common/Row/styles'
 import { formatDate } from 'Utils/formatDate'
 
 export const Post = ({
@@ -29,7 +29,7 @@ export const Post = ({
         {/** The input in sanitized by TinyMCE. Additional sanitization
          * is needed on the backend side, as it is possible to perform requests
          * to the backend directly */}
-        <PostText dangerouslySetInnerHTML={{ __html: text }} />
+        <PostContextBlock dangerouslySetInnerHTML={{ __html: text }} />
         <Row $alignment='center'>
           <ButtonLink to='edit'>Edit</ButtonLink>
           <ButtonLink to='delete'>Delete</ButtonLink>

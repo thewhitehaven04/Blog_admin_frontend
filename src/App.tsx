@@ -2,7 +2,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { UserContextProvider } from 'Context/userContext/provider'
 import { ThemeProvider } from 'styled-components'
-import { theme } from 'Components/Styles/theme'
+import { AppTheme } from 'Components/Common/theme'
 import { GlobalStyle } from '@/style'
 import '@fontsource/lato'
 import { AppRouter } from 'Router/index'
@@ -10,7 +10,7 @@ import { AppRouter } from 'Router/index'
 const App = (): JSX.Element => {
   return (
     <UserContextProvider>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={AppTheme}>
         <AppRouter />
       </ThemeProvider>
     </UserContextProvider>

@@ -3,7 +3,8 @@ import {
   ValidationMessage
 } from 'Components/Common/Forms/ValidatedField/styles'
 import { type IValidatedFieldProps } from 'Components/Common/Forms/ValidatedField/types'
-import { Column, Row } from 'Components/Styles/Common'
+import { Row } from 'Components/Common/Row/styles'
+import { Column } from 'Components/Common/Column/styles'
 
 export const ValidatedField = ({
   label,
