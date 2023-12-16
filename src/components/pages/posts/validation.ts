@@ -8,5 +8,5 @@ export const PostsQueryParamsSchema = object({
   count: number()
     .integer()
     .min(1, 'Count must be a positive integer number')
-    .default(10)
+    .default(5)
 })

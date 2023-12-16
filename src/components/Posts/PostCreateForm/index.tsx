@@ -10,7 +10,8 @@ import { useUserContext } from 'Hooks/context/useUserContext'
 import { type IPostCreateForm } from 'Pages/PostCreate/types'
 import { CreatePostValidatorSchema } from 'Pages/PostCreate/validation'
 import { useForm, type SubmitHandler } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useFormSubmit } from 'Hooks/forms/submit'
+import { Navigate } from 'react-router-dom'
 
 export const PostCreateForm = (): JSX.Element => {
   const user = useUserContext()
@@ -24,22 +25,29 @@ export const PostCreateForm = (): JSX.Element => {
     resolver: yupResolver(CreatePostValidatorSchema)
   })
 
-  const navigate = useNavigate()
+  const { isSuccessful, submissionErrors, submit } =
+    useFormSubmit({
+      submitCallback: async (data) => await PostsClientInstance.createPost(data)
+    })
+
   const createPostSubmitHandler: SubmitHandler<IPostCreateForm> = async (
     formInputsData
   ) => {
-    const post = await (await PostsClientInstance.createPost({
-      ...formInputsData,
-      author: user?.id ?? ''
-    })).json()
+    await submit({ ...formInputsData, author: user?.id ?? '' })
+  }
 
-    if (submitErrors == null) navigate('/posts')
+  if (isSuccessful === true) {
+    return <Navigate to='/posts'/>
   }
 
   return (
     <CardWrapper>
       <form onSubmit={handleSubmit(createPostSubmitHandler)}>
-        <BaseFormLayout title='New post' submitButtonText='Submit'>
+        <BaseFormLayout
+          title='New post'
+          submitButtonText='Submit'
+          errors={submissionErrors}
+        >
           <Column>
             <ValidatedField
               label='Title'

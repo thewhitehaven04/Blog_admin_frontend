@@ -1,4 +1,3 @@
-import { CardWrapper } from 'Components/Common/CardWrapper/styles'
 import { type IPostCardProps } from 'Components/Posts/PostCard/types'
 import {
   PostHeader,
@@ -8,6 +7,7 @@ import {
   PostTitleLink
 } from 'Components/Posts/PostCard/styles'
 import { formatDate } from 'Utils/formatDate'
+import { PostWrapper } from 'Pages/PostCreate/styles'
 
 export const PostCard = ({
   id,
@@ -17,7 +17,7 @@ export const PostCard = ({
   author
 }: IPostCardProps): JSX.Element => {
   return (
-    <CardWrapper>
+    <PostWrapper>
       <PostLayout>
         <PostTitleLink to={`/post/${id}`}>
           <PostHeader>{title}</PostHeader>
@@ -27,6 +27,6 @@ export const PostCard = ({
         </PostPublishedData>
         <PostContextBlock dangerouslySetInnerHTML={{ __html: text }} />
       </PostLayout>
-    </CardWrapper>
+    </PostWrapper>
   )
 }

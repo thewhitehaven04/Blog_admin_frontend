@@ -9,9 +9,9 @@ import { Column } from 'Components/Common/Column/styles'
 import { TextEditor } from 'Components/TextEditor'
 import { type IPostEditForm } from 'Pages/PostEdit/types'
 import { PostEditValidatorSchema } from 'Pages/PostEdit/validation'
-import { useState } from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useFormSubmit } from 'Hooks/forms/submit'
+import { Navigate } from 'react-router-dom'
 
 export const PostEditForm = ({
   id,
@@ -22,38 +22,36 @@ export const PostEditForm = ({
     setValue,
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm<IPostEditForm>({
     resolver: yupResolver(PostEditValidatorSchema),
     defaultValues: {
       text
     }
   })
+  const { isSuccessful, submissionErrors, submit } = useFormSubmit({
+    submitCallback: async (id, data) =>
+      await PostsClientInstance.updatePost(id, data)
+  })
 
-  const [validationErrors, setValidationErrors] = useState<string[]>([])
-
-  const navigate = useNavigate()
   const editPostHandler: SubmitHandler<IPostEditForm> = async (
     postEditData
   ) => {
-    const [responseErrors] = await PostsClientInstance.updatePost(
-      id,
-      postEditData
-    )
+    await submit(id, postEditData)
+  }
 
-    if (responseErrors == null) {
-      navigate('/posts')
-    } else {
-      setValidationErrors(validationErrors)
-    }
+  if (isSuccessful === true) {
+    return <Navigate to='/posts'/>
   }
 
   return (
     <CardWrapper>
-      <form onSubmit={handleSubmit(editPostHandler)}>
+      <form
+        onSubmit={handleSubmit(editPostHandler)}
+      >
         <BaseFormLayout
           title='Edit post'
-          errors={validationErrors}
+          errors={submissionErrors}
           submitButtonText='Submit'
         >
           <ValidatedField
@@ -87,3 +85,4 @@ export const PostEditForm = ({
     </CardWrapper>
   )
 }
+

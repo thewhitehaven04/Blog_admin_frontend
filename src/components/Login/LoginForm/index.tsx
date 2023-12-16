@@ -40,7 +40,7 @@ export const LoginForm = (): JSX.Element => {
   return (
     <CardWrapper>
       <form onSubmit={handleSubmit(loginHandler)}>
-        <BaseFormLayout title='Login' errors={submitErrors}>
+        <BaseFormLayout title='Login' errors={submitErrors} submitButtonText='Login'>
           <ValidatedField
             label='Username'
             labelFor='username'

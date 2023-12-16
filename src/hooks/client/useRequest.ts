@@ -19,6 +19,7 @@ export function useRequest<T>(
     response: null
   })
 
+
   useEffect(() => {
     async function fetch(): Promise<void> {
       const request = requestCallback()

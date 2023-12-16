@@ -32,6 +32,8 @@ export const Row = styled.div<IContainerProps> `
         return 'start'
       case 'end':
         return 'end'
+      case 'center': 
+        return 'center'
       default:
         return 'start'
     }

@@ -1,9 +1,16 @@
-import { type IPostResponseDto } from 'Client/posts/types'
+import { withLoadingOnFetch } from 'Components/HOC/Loading'
 import { PostEditForm } from 'Components/Posts/PostEditForm'
-import { useLoaderData } from 'react-router-dom'
+import { type IPostEditFormProps } from 'Components/Posts/PostEditForm/types'
+import { usePost } from 'Hooks/fetching/post'
+import { useParams } from 'react-router-dom'
+
+const EditForm = withLoadingOnFetch(
+  ({ data }: { data: IPostEditFormProps }) => <PostEditForm {...data} />
+)
 
 export const PostEditFormPage = (): JSX.Element => {
-  const { id, title, text } = useLoaderData() as IPostResponseDto
+  const { id } = useParams<'id'>()
+  const post = usePost(id ?? '')
 
-  return <PostEditForm id={id} title={title} text={text} />
+  return <EditForm {...post} />
 }

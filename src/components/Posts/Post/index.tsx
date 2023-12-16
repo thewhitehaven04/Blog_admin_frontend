@@ -9,8 +9,9 @@ import {
 } from 'Components/Posts/PostCard/styles'
 import { Row } from 'Components/Common/Row/styles'
 import { formatDate } from 'Utils/formatDate'
+import { withLoadingOnFetch } from 'Components/HOC/Loading'
 
-export const Post = ({
+const PostView = ({
   title,
   text,
   author,
@@ -24,7 +25,7 @@ export const Post = ({
           {/** need to rework backend method to return author's name instead
            * of ID to prevent making an additional request
            * to get author by its ID */}
-          Published by {author} at {formatDate(published)}
+          Published by {author.username} at {formatDate(published)}
         </PostPublishedData>
         {/** The input in sanitized by TinyMCE. Additional sanitization
          * is needed on the backend side, as it is possible to perform requests
@@ -38,3 +39,7 @@ export const Post = ({
     </CardWrapper>
   )
 }
+
+export const Post = withLoadingOnFetch(({ data }: { data: IPostProps }) => (
+  <PostView {...data} />
+))

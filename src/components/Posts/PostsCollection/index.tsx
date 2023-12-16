@@ -1,11 +1,10 @@
-import { type IPostsCollectionDto } from 'Client/posts/types'
-import { withLoadingOnFetch } from 'Components/HOC/Loading'
 import { PostCard } from 'Components/Posts/PostCard'
+import { type IPostCollectionProps } from 'Components/Posts/PostsCollection/types'
 import { PostsList } from 'Pages/Posts/styles'
 
-export const Posts = ({ data }: { data: IPostsCollectionDto }): JSX.Element => {
-  const { posts } = data
-
+export const PostsCollection = ({
+  posts
+}: IPostCollectionProps): JSX.Element => {
   return (
     <PostsList>
       {posts.map((post) => (
@@ -14,5 +13,3 @@ export const Posts = ({ data }: { data: IPostsCollectionDto }): JSX.Element => {
     </PostsList>
   )
 }
-
-export const PostsCollection = withLoadingOnFetch(Posts)

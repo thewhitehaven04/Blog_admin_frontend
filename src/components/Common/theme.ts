@@ -1,5 +1,5 @@
 export const AppTheme = {
-  accent: "#AAAAAA",
+  accent: "#CCCCCC",
   textPrimary: "#222222",
   textSecondary: '#F4EAE0',
   bgSecondary: '#000000',
