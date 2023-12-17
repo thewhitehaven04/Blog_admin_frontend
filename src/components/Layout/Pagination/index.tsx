@@ -10,8 +10,7 @@ export const Pagination = ({
   totalCount,
   pageSize
 }: IPaginationProps): JSX.Element => {
-  const pageCount = getPageCount(totalCount, pageSize)
-  const offsets = getOffsets(pageCount, pageSize)
+  const offsets = getOffsets(getPageCount(totalCount, pageSize), pageSize)
 
   return (
     <nav>

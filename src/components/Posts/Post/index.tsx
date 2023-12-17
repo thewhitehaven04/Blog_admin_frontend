@@ -40,6 +40,6 @@ const PostView = ({
   )
 }
 
-export const Post = withLoadingOnFetch(({ data }: { data: IPostProps }) => (
+export const Post = withLoadingOnFetch<IPostProps>(({ data }) => (
   <PostView {...data} />
 ))

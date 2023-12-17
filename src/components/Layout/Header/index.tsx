@@ -11,7 +11,10 @@ export const Header = (): JSX.Element => {
     <HeaderBar>
       {user != null ? (
         <Row $justify='between' $alignment='center'>
-          <ButtonLink to='post/new'>New post</ButtonLink>
+          <Row $alignment='start'>
+            <ButtonLink to='posts?count=5&offset=0'>Review posts</ButtonLink>
+            <ButtonLink to='post/new'>New post</ButtonLink>
+          </Row>
           <UserData username={user.username} email={user.email} />
         </Row>
       ) : (

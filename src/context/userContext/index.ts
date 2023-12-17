@@ -1,10 +1,6 @@
+import { type IUserContext } from 'Context/userContext/types'
 import { type Dispatch, createContext } from 'react'
 
-interface IUserContext {
-  id: string,
-  username: string
-  email: string
-}
 
 const UserContext = createContext<IUserContext | null>(null)
 
