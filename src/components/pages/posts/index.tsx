@@ -19,10 +19,7 @@ const PostPagination = withLoadingOnFetch<IPostsCollectionDto>(({ data }) => {
   )
 
   return (
-    <Pagination
-      totalCount={data.totalCount}
-      pageSize={validatedParams.count}
-    />
+    <Pagination totalCount={data.totalCount} pageSize={validatedParams.count} />
   )
 })
 

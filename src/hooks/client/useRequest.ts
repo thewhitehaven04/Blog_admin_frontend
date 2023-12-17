@@ -19,8 +19,9 @@ export function useRequest<T>(
     response: null
   })
 
-
   useEffect(() => {
+    let ignoreRequest = false
+
     async function fetch(): Promise<void> {
       const request = requestCallback()
 
@@ -29,21 +30,28 @@ export function useRequest<T>(
           return response.json() as T
         })
         .then((json) => {
-          setRequestState({
-            status: ERequestState.SUCCESS,
-            response: json
-          })
+          if (!ignoreRequest) {
+            setRequestState({
+              status: ERequestState.SUCCESS,
+              response: json
+            })
+          }
         })
         .catch((error) => {
-          setRequestState({
-            status: ERequestState.ERROR,
-            response: null
-          })
+          if (!ignoreRequest) {
+            setRequestState({
+              status: ERequestState.ERROR,
+              response: null
+            })
+          }
           console.error(error)
         })
     }
 
     void fetch()
+    return () => {
+      ignoreRequest = true
+    }
   }, [requestCallback])
 
   return requestState
