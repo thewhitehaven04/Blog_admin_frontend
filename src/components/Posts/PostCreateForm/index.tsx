@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup'
 import { PostsClientInstance } from 'Client/posts'
 import { CardWrapper } from 'Components/Common/CardWrapper/styles'
 import { BaseFormLayout } from 'Components/Common/Forms/BaseFormLayout'
@@ -8,7 +7,6 @@ import { Column } from 'Components/Common/Column/styles'
 import { TextEditor } from 'Components/TextEditor'
 import { useUserContext } from 'Hooks/context/useUserContext'
 import { type IPostCreateForm } from 'Pages/PostCreate/types'
-import { CreatePostValidatorSchema } from 'Pages/PostCreate/validation'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { useFormSubmit } from 'Hooks/forms/submit'
 import { Navigate } from 'react-router-dom'
@@ -21,9 +19,7 @@ export const PostCreateForm = (): JSX.Element => {
     handleSubmit,
     setValue,
     formState: { errors }
-  } = useForm<IPostCreateForm>({
-    resolver: yupResolver(CreatePostValidatorSchema)
-  })
+  } = useForm<IPostCreateForm>()
 
   const { isSuccessful, submissionErrors, submit } =
     useFormSubmit({

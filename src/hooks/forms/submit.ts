@@ -1,16 +1,15 @@
 import { type TGenericResponse } from 'Client/base/types'
+import { type IUseFormSubmitReturn } from 'Hooks/forms/types'
 import { useState } from 'react'
 
 export function useFormSubmit({
   submitCallback
 }: {
   submitCallback: (...args: any) => Promise<Response>
-}): {
-  submit: (...args: any) => Promise<void>
-  submissionErrors: string[]
-  isSuccessful: boolean | null
-} {
-  const [submissionErrors, setSubmissionErrors] = useState<string[]>([])
+}): IUseFormSubmitReturn {
+  const [submissionErrors, setSubmissionErrors] = useState<
+    IUseFormSubmitReturn['submissionErrors']
+  >([])
   const [isSuccessful, setIsSuccessful] = useState<boolean | null>(null)
 
   const submit = async (...args: any): Promise<void> => {
