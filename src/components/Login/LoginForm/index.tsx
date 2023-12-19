@@ -1,18 +1,14 @@
 import { BaseFormLayout } from 'Components/Common/Forms/BaseFormLayout'
 import { Input } from 'Components/Common/Forms/Input/styles'
-import { useUserDispatchContext } from 'Hooks/context/useUserDispatchContext'
-import { AuthService } from 'Service/authService'
 import { CardWrapper } from 'Components/Common/CardWrapper/styles'
 import { type SubmitHandler, useForm } from 'react-hook-form'
 import { type ILoginForm } from 'Components/Login/LoginForm/types'
-import { useState } from 'react'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LoginFormValidatorSchema } from 'Components/Login/LoginForm/validation'
 import { ValidatedField } from 'Components/Common/Forms/ValidatedField'
+import { useAuthenticate } from 'Hooks/authenticate'
 
 export const LoginForm = (): JSX.Element => {
-  const userDispatch = useUserDispatchContext()
-
   const {
     register,
     handleSubmit,
@@ -21,26 +17,22 @@ export const LoginForm = (): JSX.Element => {
     resolver: yupResolver(LoginFormValidatorSchema)
   })
 
-  const [submitErrors, setSubmitErrors] = useState<string[]>([])
+  const { submissionErrors, submit } = useAuthenticate()
 
   const loginHandler: SubmitHandler<ILoginForm> = async (
     loginFormFieldData
   ) => {
-    const [error, payload] = await AuthService.authenticate(loginFormFieldData)
-
-    if (payload != null) {
-      userDispatch(payload)
-    }
-
-    if (error != null) {
-      setSubmitErrors([error])
-    }
+    await submit(loginFormFieldData)
   }
 
   return (
     <CardWrapper>
       <form onSubmit={handleSubmit(loginHandler)}>
-        <BaseFormLayout title='Login' errors={submitErrors} submitButtonText='Login'>
+        <BaseFormLayout
+          title='Login'
+          errors={submissionErrors}
+          submitButtonText='Login'
+        >
           <ValidatedField
             label='Username'
             labelFor='username'
@@ -57,7 +49,6 @@ export const LoginForm = (): JSX.Element => {
           >
             <Input id='password' type='password' {...register('password')} />
           </ValidatedField>
-          <button type='submit'>Login</button>
         </BaseFormLayout>
       </form>
     </CardWrapper>
