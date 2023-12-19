@@ -1,7 +1,6 @@
 import { Private } from 'Components/Common/Private'
 import { AppLayout } from 'Components/Layout/AppLayout'
 import { DeletePostModal } from 'Components/Modals/DeletePostModal'
-import { PostsPaginationContextProvider } from 'Context/pagination/provider'
 import { LoginPage } from 'Pages/Login'
 import { PostCreatePage } from 'Pages/PostCreate'
 import { PostEditFormPage } from 'Pages/PostEdit'
@@ -16,14 +15,7 @@ export const AppRouter = (): JSX.Element => {
         <Route path='/' element={<AppLayout />}>
           <Route index element={<LoginPage />} />
           <Route path='*' element={<Private />}>
-            <Route
-              path='posts'
-              element={
-                <PostsPaginationContextProvider>
-                  <PostsPage />
-                </PostsPaginationContextProvider>
-              }
-            />
+            <Route path='posts' element={<PostsPage />} />
             <Route path='post/new' element={<PostCreatePage />} />
             <Route path='post/:id' element={<PostViewPage />} />
             <Route path='post/:id/edit' element={<PostEditFormPage />}>

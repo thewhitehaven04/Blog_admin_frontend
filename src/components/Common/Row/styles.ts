@@ -1,9 +1,7 @@
 import { type IContainerProps } from "Components/Common/types";
 import styled from "styled-components";
 
-
-
-export const Row = styled.div<IContainerProps> `
+export const Row = styled.div<IContainerProps>`
   display: flex;
   flex-flow: row nowrap;
   align-items: ${(props) => {

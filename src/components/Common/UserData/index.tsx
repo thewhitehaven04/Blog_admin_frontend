@@ -2,7 +2,6 @@ import { CardWrapper } from 'Components/Common/CardWrapper/styles'
 import { Column } from '../Column/styles'
 import { type IUserDataProps } from 'Components/Common/UserData/types'
 
-// placeholder
 export const UserData = (props: IUserDataProps): JSX.Element => (
   <Column $alignment='end'>
     <CardWrapper>
