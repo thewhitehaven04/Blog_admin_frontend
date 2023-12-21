@@ -1,6 +1,6 @@
 import { Button } from 'Components/Common/Button/styles'
-import { CardWrapper } from 'Components/Common/CardWrapper/styles'
 import {
+  ModalHeader,
   ModalOverlay,
   ModalText,
   ModalTitle,
@@ -9,6 +9,8 @@ import {
 import { type IDialogModalProps } from 'Components/Common/Modal/types'
 import { Row } from '../Row/styles'
 import { Column } from '../Column/styles'
+import { Icon } from 'Components/Common/Icon/styles'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 export const Modal = ({
   title,
@@ -32,27 +34,29 @@ export const Modal = ({
   return (
     <ModalOverlay>
       <ModalWrapper>
-          <Column>
-            <Row $justify='between'>
+        <Column>
+          <ModalHeader>
+            <Row $justify='between' $alignment='center'>
               <ModalTitle>{title}</ModalTitle>
-              <Button type='button' onClick={closeCallback}>
-                X
+              <Button>
+                <Icon icon={faXmark} onClick={closeCallback} />
               </Button>
             </Row>
-            <ModalText>{text}</ModalText>
-            <Row $justify='evenly'>
-              {acceptCallback != null && (
-                <Button type='button' onClick={handleAccept}>
-                  Accept
-                </Button>
-              )}
-              {declineCallback != null && (
-                <Button type='button' onClick={handleDecline}>
-                  Decline
-                </Button>
-              )}
-            </Row>
-          </Column>
+          </ModalHeader>
+          <ModalText>{text}</ModalText>
+          <Row $justify='evenly'>
+            {acceptCallback != null && (
+              <Button type='button' onClick={handleAccept}>
+                Accept
+              </Button>
+            )}
+            {declineCallback != null && (
+              <Button type='button' onClick={handleDecline}>
+                Decline
+              </Button>
+            )}
+          </Row>
+        </Column>
       </ModalWrapper>
     </ModalOverlay>
   )

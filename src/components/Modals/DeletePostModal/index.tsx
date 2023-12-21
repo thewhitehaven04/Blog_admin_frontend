@@ -8,12 +8,14 @@ export const DeletePostModal = (): JSX.Element => {
   const navigate = useNavigate()
 
   const deletePost = async (): Promise<void> => {
-    const data = await (await PostsClientInstance.deletePost(id ?? '')).json() as TGenericResponse
+    const data = (await (
+      await PostsClientInstance.deletePost(id ?? '')
+    ).json()) as TGenericResponse
 
     if (data == null) {
-      /** should also clear browser history api from the last 
-      * entry after successful removal to prevent the 'back' button from 
-      * directing the user back to removal form */
+      /** should also clear browser history api from the last
+       * entry after successful removal to prevent the 'back' button from
+       * directing the user back to removal form */
       navigate(`/posts`)
     }
   }
@@ -27,7 +29,7 @@ export const DeletePostModal = (): JSX.Element => {
       accept={deletePost}
       close={closeModalHandler}
       title='Are you sure?'
-      text='Do you want to delete this post? This action is irreverisble.'
+      text='Do you want to delete this post? This action is irreversible.'
     />
   )
 }

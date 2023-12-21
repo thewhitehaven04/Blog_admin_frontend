@@ -6,9 +6,13 @@ export const RedirectPage = (): JSX.Element => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       navigate('/')
     }, appConfig.redirectTimeout)
+
+    return () => {
+      clearTimeout(timeoutId)
+    }
   }, [navigate])
 
   return (

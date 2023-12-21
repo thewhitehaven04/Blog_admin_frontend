@@ -24,7 +24,7 @@ export const PostHeader = styled.h2`
 `
 export const PostPublishedData = styled.span`
   grid-area: published;
-  color: ${(props) => props.theme.textPrimary};
+  color: ${(props) => props.theme.textSecondary};
   margin-bottom: 8px;
 `
 

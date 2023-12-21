@@ -34,5 +34,5 @@ export const Column = styled('div') <IContainerProps> `
         return 'start'
     }
   } };
-  gap: 8px;
+  gap: 4px;
 `

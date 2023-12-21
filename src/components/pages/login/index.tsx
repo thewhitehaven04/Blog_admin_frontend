@@ -9,7 +9,5 @@ export const LoginPage = (): JSX.Element => {
     return <Navigate to='/posts' />
   }
 
-  return (
-    <LoginForm/>
-  )
+  return <LoginForm/>
 }

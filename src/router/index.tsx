@@ -17,10 +17,10 @@ export const AppRouter = (): JSX.Element => {
           <Route path='*' element={<Private />}>
             <Route path='posts' element={<PostsPage />} />
             <Route path='post/new' element={<PostCreatePage />} />
-            <Route path='post/:id' element={<PostViewPage />} />
-            <Route path='post/:id/edit' element={<PostEditFormPage />}>
+            <Route path='post/:id' element={<PostViewPage />}>
               <Route path='delete' element={<DeletePostModal />} />
             </Route>
+            <Route path='post/:id/edit' element={<PostEditFormPage />} />
           </Route>
         </Route>
       </Routes>

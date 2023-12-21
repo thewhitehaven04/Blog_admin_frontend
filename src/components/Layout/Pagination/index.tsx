@@ -1,6 +1,7 @@
 import { Row } from 'Components/Common/Row/styles'
 import { getOffsets, getPageCount } from 'Components/Layout/Pagination/helpers'
 import {
+  PaginationContainer,
   PaginationLink,
   RowListItem
 } from 'Components/Layout/Pagination/styles'
@@ -13,7 +14,7 @@ export const Pagination = ({
   const offsets = getOffsets(getPageCount(totalCount, pageSize), pageSize)
 
   return (
-    <nav>
+    <PaginationContainer>
       <Row $justify='center'>
         {offsets.map((offset, index) => (
           <RowListItem key={offset}>
@@ -23,6 +24,6 @@ export const Pagination = ({
           </RowListItem>
         ))}
       </Row>
-    </nav>
+    </PaginationContainer>
   )
 }

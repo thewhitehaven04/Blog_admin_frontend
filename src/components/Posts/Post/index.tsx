@@ -10,6 +10,8 @@ import {
 import { Row } from 'Components/Common/Row/styles'
 import { formatDate } from 'Utils/formatDate'
 import { withLoadingOnFetch } from 'Components/HOC/Loading'
+import * as SC from 'Components/Common/Icon/styles'
+import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const PostView = ({
   title,
@@ -32,8 +34,12 @@ const PostView = ({
          * to the backend directly */}
         <PostContextBlock dangerouslySetInnerHTML={{ __html: text }} />
         <Row $alignment='center'>
-          <ButtonLink to='edit'>Edit</ButtonLink>
-          <ButtonLink to='delete'>Delete</ButtonLink>
+          <ButtonLink to='edit'>
+            <SC.Icon icon={faPenToSquare}/>
+          </ButtonLink>
+          <ButtonLink to='delete'>
+            <SC.Icon icon={faTrash}/>
+          </ButtonLink>
         </Row>
       </PostLayout>
     </CardWrapper>

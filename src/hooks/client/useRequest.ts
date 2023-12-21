@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 
 export enum ERequestState {
   PENDING,
@@ -6,10 +6,10 @@ export enum ERequestState {
   ERROR
 }
 
-export type TRequestState<T> =
-  | { status: ERequestState.SUCCESS; response: T }
-  | { status: ERequestState.PENDING; response: null }
-  | { status: ERequestState.ERROR; response: null }
+export interface TRequestState<T> {
+  status: ERequestState
+  response: T | null
+}
 
 export function useRequest<T>(
   requestCallback: () => Promise<Response>
@@ -22,7 +22,7 @@ export function useRequest<T>(
   useEffect(() => {
     let ignoreRequest = false
 
-    async function fetch(): Promise<void> {
+    function fetch(): void {
       const request = requestCallback()
 
       request
@@ -48,11 +48,11 @@ export function useRequest<T>(
         })
     }
 
-    void fetch()
+    fetch()
     return () => {
       ignoreRequest = true
     }
   }, [requestCallback])
 
-  return requestState
+  return requestState 
 }

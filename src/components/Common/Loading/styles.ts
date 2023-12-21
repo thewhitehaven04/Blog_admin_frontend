@@ -10,11 +10,11 @@ export const LoadingOverlay = styled.div`
   backdrop-filter: brightness(0.6)
 `
 
-export const FAIcon = styled(FontAwesomeIcon)`
+export const LoadingIcon = styled(FontAwesomeIcon)`
   color: white; 
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 64px;
+  height: 64px
 `

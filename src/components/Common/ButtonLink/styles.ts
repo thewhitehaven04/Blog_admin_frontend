@@ -7,8 +7,11 @@ export const ButtonLink = styled(Link)`
 
   border-radius: 4px;
   border: 1px solid ${(props) => props.theme.accent};
-  background-color: ${(props) => props.theme.bgPrimary};
   color: ${props => props.theme.textPrimary};
 
   text-decoration: none;
+
+  &:hover {
+    background-color: ${props => props.theme.highlight};
+  }
 `
