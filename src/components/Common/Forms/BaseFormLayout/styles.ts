@@ -17,3 +17,8 @@ export const FormHeaderWrapper = styled.div`
   padding-inline: 12px;
   padding-block: 8px;
 `
+
+export const FormErrorsWrapper = styled.div`
+  padding-block: 8px;
+  padding-inline: 12px;
+`

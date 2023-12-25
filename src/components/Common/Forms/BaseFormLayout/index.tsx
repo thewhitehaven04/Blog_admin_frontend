@@ -1,11 +1,7 @@
 import { Button } from 'Components/Common/Button/styles'
 import { type IFormWrapperProps } from './types'
 import { FormErrors } from 'Components/Common/Forms/FormFieldErrors'
-import {
-  FormContentWrapper,
-  FormHeaderWrapper,
-  FormTitle
-} from 'Components/Common/Forms/BaseFormLayout/styles'
+import * as SC from 'Components/Common/Forms/BaseFormLayout/styles'
 import { Row } from 'Components/Common/Row/styles'
 
 export const BaseFormLayout = ({
@@ -16,14 +12,16 @@ export const BaseFormLayout = ({
 }: IFormWrapperProps): JSX.Element => {
   return (
     <>
-      <FormHeaderWrapper>
+      <SC.FormHeaderWrapper>
         <Row $justify='between' $alignment='center'>
-          <FormTitle>{title}</FormTitle>
+          <SC.FormTitle>{title}</SC.FormTitle>
           <Button type='submit'>{submitButtonText}</Button>
         </Row>
-      </FormHeaderWrapper>
-      <FormContentWrapper>{children}</FormContentWrapper>
-      <FormErrors errors={errors} />
+      </SC.FormHeaderWrapper>
+      <SC.FormContentWrapper>{children}</SC.FormContentWrapper>
+      <SC.FormErrorsWrapper>
+        <FormErrors errors={errors} />
+      </SC.FormErrorsWrapper>
     </>
   )
 }

@@ -31,11 +31,7 @@ export default class BaseApiClient {
       signal: abortSignal
     })
 
-    if (response.ok) {
-      return response
-    }
-
-    throw new ClientError('Unable to connect to the API', response)
+    return response
   }
 
   async authorizedRequest(
