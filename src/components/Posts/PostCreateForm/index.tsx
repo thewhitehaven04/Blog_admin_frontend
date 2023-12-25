@@ -21,10 +21,9 @@ export const PostCreateForm = (): JSX.Element => {
     formState: { errors }
   } = useForm<IPostCreateForm>()
 
-  const { isSuccessful, submissionErrors, submit } =
-    useFormSubmit({
-      submitCallback: async (data) => await PostsClientInstance.createPost(data)
-    })
+  const { isSuccessful, submissionErrors, submit } = useFormSubmit({
+    submitCallback: async (data) => await PostsClientInstance.createPost(data)
+  })
 
   const createPostSubmitHandler: SubmitHandler<IPostCreateForm> = async (
     formInputsData
@@ -33,7 +32,7 @@ export const PostCreateForm = (): JSX.Element => {
   }
 
   if (isSuccessful === true) {
-    return <Navigate to='/posts'/>
+    return <Navigate to='/posts' />
   }
 
   return (
@@ -61,7 +60,11 @@ export const PostCreateForm = (): JSX.Element => {
               required
               errorMessage={errors.published?.message ?? null}
             >
-              <Input type='datetime-local' {...register('published')} />
+              <Input
+                type='datetime-local'
+                width='150px'
+                {...register('published')}
+              />
             </ValidatedField>
             <TextEditor
               initialValue=''
@@ -70,6 +73,7 @@ export const PostCreateForm = (): JSX.Element => {
               onSave={(editorContent) => {
                 setValue('text', editorContent)
               }}
+              required
             />
           </Column>
         </BaseFormLayout>

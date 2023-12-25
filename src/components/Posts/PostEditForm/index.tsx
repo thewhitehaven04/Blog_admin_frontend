@@ -78,6 +78,7 @@ export const PostEditForm = ({
               name='text'
               initialValue={text}
               label='Post content'
+              required
             />
           </Column>
         </BaseFormLayout>
