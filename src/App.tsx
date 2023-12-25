@@ -6,14 +6,18 @@ import { AppTheme } from 'Components/Common/theme'
 import { GlobalStyle } from '@/style'
 import '@fontsource/lato'
 import { AppRouter } from 'Router/index'
+import { ErrorBoundary } from 'react-error-boundary'
+import { ErrorComponent } from 'Components/Common/Error'
 
 const App = (): JSX.Element => {
   return (
-    <UserContextProvider>
-      <ThemeProvider theme={AppTheme}>
-        <AppRouter />
-      </ThemeProvider>
-    </UserContextProvider>
+    <ErrorBoundary FallbackComponent={ErrorComponent}>
+      <UserContextProvider>
+        <ThemeProvider theme={AppTheme}>
+          <AppRouter />
+        </ThemeProvider>
+      </UserContextProvider>
+    </ErrorBoundary>
   )
 }
 

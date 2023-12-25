@@ -35,10 +35,10 @@ const PostView = ({
         <PostContextBlock dangerouslySetInnerHTML={{ __html: text }} />
         <Row $alignment='center'>
           <ButtonLink to='edit'>
-            <SC.Icon icon={faPenToSquare}/>
+            <SC.Icon icon={faPenToSquare} />
           </ButtonLink>
           <ButtonLink to='delete'>
-            <SC.Icon icon={faTrash}/>
+            <SC.Icon icon={faTrash} />
           </ButtonLink>
         </Row>
       </PostLayout>
