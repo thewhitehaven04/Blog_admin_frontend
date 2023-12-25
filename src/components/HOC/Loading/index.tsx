@@ -1,5 +1,5 @@
 import { type TGenericResponse } from 'Client/base/types'
-import { ErrorComponent } from 'Components/Common/Error'
+import { FetchError } from 'Components/Common/FetchError'
 import { LoadingComponent } from 'Components/Common/Loading'
 import { type ILoadable } from 'Components/HOC/Loading/types'
 import { ERequestState, type TRequestState } from 'Hooks/client/useRequest'
@@ -18,6 +18,6 @@ export function withLoadingOnFetch<T>(component: FC<ILoadable<T>>) {
     } else if (status === ERequestState.PENDING) {
       return <LoadingComponent />
     }
-    return <ErrorComponent />
+    return <FetchError/> 
   }
 }
