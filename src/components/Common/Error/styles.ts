@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 
 export const ErrorInformation = styled.span`
@@ -8,4 +9,9 @@ export const ErrorInformation = styled.span`
   padding: 8px;
   border-radius: 4px;
   width: 100%;
+`
+
+export const ErrorIcon = styled(FontAwesomeIcon)`
+  height: 48px;
+  color: ${props => props.theme.textPrimary};
 `
