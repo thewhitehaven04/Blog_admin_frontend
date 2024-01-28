@@ -16,13 +16,14 @@ import { Navigate } from 'react-router-dom'
 export const PostEditForm = ({
   id,
   text,
-  title
+  title,
+  summary
 }: IPostEditFormProps): JSX.Element => {
   const {
     setValue,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<IPostEditForm>({
     resolver: yupResolver(PostEditValidatorSchema),
     defaultValues: {
@@ -41,14 +42,12 @@ export const PostEditForm = ({
   }
 
   if (isSuccessful === true) {
-    return <Navigate to='/posts'/>
+    return <Navigate to='/posts' />
   }
 
   return (
     <CardWrapper>
-      <form
-        onSubmit={handleSubmit(editPostHandler)}
-      >
+      <form onSubmit={handleSubmit(editPostHandler)}>
         <BaseFormLayout
           title='Edit post'
           errors={submissionErrors}
@@ -64,10 +63,22 @@ export const PostEditForm = ({
             <Input
               type='text'
               {...register('title', {
-                required: true,
-                minLength: 2
+                required: true
               })}
               defaultValue={title}
+            />
+          </ValidatedField>
+          <ValidatedField
+            label='Summary'
+            labelFor='summary'
+            errorMessage={errors.summary?.message ?? ''}
+            vertical
+            required
+          >
+            <Input
+              type='text'
+              {...(register('summary'), { required: true })}
+              defaultValue={summary}
             />
           </ValidatedField>
           <Column>
@@ -86,4 +97,3 @@ export const PostEditForm = ({
     </CardWrapper>
   )
 }
-

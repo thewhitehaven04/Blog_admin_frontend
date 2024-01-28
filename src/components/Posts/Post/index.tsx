@@ -12,6 +12,8 @@ import { formatDate } from 'Utils/formatDate'
 import { withLoadingOnFetch } from 'Components/HOC/Loading'
 import * as SC from 'Components/Common/Icon/styles'
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { IFormattedPostDto } from 'Client/posts/types'
+import { TGenericResponse } from 'Client/base/types'
 
 const PostView = ({
   title,
@@ -46,6 +48,7 @@ const PostView = ({
   )
 }
 
-export const Post = withLoadingOnFetch<IPostProps>(({ data }) => (
-  <PostView {...data} />
-))
+export const Post = withLoadingOnFetch<
+  IFormattedPostDto,
+  TGenericResponse<IFormattedPostDto>
+>(({ data }) => <PostView {...data} />)
