@@ -1,4 +1,5 @@
 export interface IPaginationProps {
-  pageSize: number
+  count: number
+  offset: number
   totalCount: number
 }

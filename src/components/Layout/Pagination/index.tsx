@@ -8,17 +8,17 @@ import {
 import { type IPaginationProps } from 'Components/Layout/Pagination/types'
 
 export const Pagination = ({
-  totalCount,
-  pageSize
+  count,
+  totalCount
 }: IPaginationProps): JSX.Element => {
-  const offsets = getOffsets(getPageCount(totalCount, pageSize), pageSize)
+  const offsets = getOffsets(getPageCount(totalCount, count), count)
 
   return (
     <PaginationContainer>
       <Row $justify='center'>
         {offsets.map((offset, index) => (
           <RowListItem key={offset}>
-            <PaginationLink to={`?count=${pageSize}&offset=${offset}`}>
+            <PaginationLink to={`?count=${count}&offset=${offset}`}>
               {index + 1}
             </PaginationLink>
           </RowListItem>

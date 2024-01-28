@@ -1,12 +1,19 @@
-import { type TGenericResponse } from 'Client/base/types'
+import {
+  IErrorResponse,
+  TGenericResponse,
+  TPaginatedResponse
+} from 'Client/base/types'
 import { FetchError } from 'Components/Common/FetchError'
 import { LoadingComponent } from 'Components/Common/Loading'
-import { type ILoadable } from 'Components/HOC/Loading/types'
 import { ERequestState, type TRequestState } from 'Hooks/client/useRequest'
 import { type FC } from 'react'
 
-export function withLoadingOnFetch<T>(component: FC<ILoadable<T>>) {
-  return function (props: TRequestState<TGenericResponse<T>>) {
+export function withLoadingOnFetch<
+  K,
+  T extends TGenericResponse<K> | TPaginatedResponse<K>
+>(component: FC<Exclude<T, IErrorResponse>>) {
+  // called from the component
+  return function (props: TRequestState<T>) {
     const { status, response } = props
 
     if (
@@ -14,10 +21,10 @@ export function withLoadingOnFetch<T>(component: FC<ILoadable<T>>) {
       response != null &&
       response.success
     ) {
-      return component({ data: response.data })
+      return component(response as Exclude<T, IErrorResponse>)
     } else if (status === ERequestState.PENDING) {
       return <LoadingComponent />
     }
-    return <FetchError/> 
+    return <FetchError />
   }
 }

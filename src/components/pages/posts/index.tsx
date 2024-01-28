@@ -1,17 +1,19 @@
-import { type IPostsCollectionDto } from 'Client/posts/types'
+import { TPaginatedResponse } from 'Client/base/types'
+import { IFormattedPostDto } from 'Client/posts/types'
 import { withLoadingOnFetch } from 'Components/HOC/Loading'
 import { Pagination } from 'Components/Layout/Pagination'
 import { PostsCollection } from 'Components/Posts/PostsCollection'
 import { usePosts } from 'Hooks/fetching/posts'
 import { usePagination } from 'Hooks/pagination'
 
-const PostsPageContent = withLoadingOnFetch<IPostsCollectionDto>(({ data }) => {
-  const { count } = usePagination()
-
+const PostsPageContent = withLoadingOnFetch<
+  IFormattedPostDto,
+  TPaginatedResponse<IFormattedPostDto>
+>(({ data, pagination }) => {
   return (
     <>
-      <PostsCollection posts={data.posts} />
-      <Pagination totalCount={data.totalCount} pageSize={count} />
+      <PostsCollection posts={data} />
+      <Pagination {...pagination} />
     </>
   )
 })

@@ -1,3 +1,5 @@
+import { TPaginatedResponse } from 'Client/base/types'
+
 export interface IPostResponseDto {
   id: string,
   title: string
@@ -37,7 +39,5 @@ export interface IFormattedPostDto {
   published: string
   isPublished: boolean
 }
-export interface IPostsCollectionDto {
-  posts: IFormattedPostDto[],
-  totalCount: number
-}
+
+export type TGetPostsResponse = TPaginatedResponse<IFormattedPostDto>
